@@ -75,23 +75,67 @@
     .section{padding:56px 0}
     .section .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
     .section .section-title h2{margin:0;font-size:20px}
-    .clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;align-items:center}
-    .client-card{height:100px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);display:flex;align-items:center;justify-content:center;border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.02);cursor:pointer;transition:all 0.2s ease}
-    .client-card:hover{transform:scale(1.05)}
-    .client-card img{max-height:80px;max-width:100%;object-fit:contain;filter:grayscale(50%) brightness(1.1)}
-    .counter{font-size:34px;font-weight:700;color:var(--accent)}
-    .two-col{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
+
+    /* Clients section */
+    #clients {
+      background: linear-gradient(135deg, rgba(124,92,255,0.05), rgba(77,215,255,0.05));
+      backdrop-filter: blur(8px);
+      padding: 56px 0;
+      border-radius: 12px;
+      margin-bottom: 28px;
+    }
+    .clients-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+      gap:24px;
+      align-items:center;
+    }
+    .client-card{
+      height:110px;
+      background: rgba(255, 255, 255, 0.02);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      padding:10px;
+      border:1px solid rgba(255,255,255,0.03);
+      cursor:pointer;
+      transition:all 0.25s ease;
+    }
+    .client-card:hover{
+      transform: scale(1.08);
+      box-shadow: 0 12px 28px rgba(124,92,255,0.25);
+    }
+    .client-card img{
+      max-height:90px;
+      max-width:100%;
+      object-fit:contain;
+      filter:grayscale(40%) brightness(1.1);
+      transition: transform 0.25s, filter 0.25s, box-shadow 0.25s;
+    }
+    .client-card:hover img{
+      transform: scale(1.05);
+      filter: grayscale(0%) brightness(1.2);
+    }
+
+    /* Certifications */
     .cert-list{display:flex;flex-direction:column;gap:10px}
-    .cert{background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
+    .cert{background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:flex-start}
+
+    /* Quote */
     .quote-card{font-style:italic;color:#dbe9ff;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(124,92,255,0.06), rgba(124,92,255,0.02));border:1px solid rgba(124,92,255,0.06)}
+
+    /* Gallery */
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
     .gallery-grid img{width:100%;height:140px;object-fit:cover;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.03);transition:transform 0.2s}
     .gallery-grid img:hover{transform:scale(1.05)}
+
     footer{padding:36px 0;color:var(--muted);text-align:center;font-size:14px}
     #scrollTop{position:fixed;right:20px;bottom:22px;background:var(--accent);color:#021020;border-radius:12px;padding:12px 14px;box-shadow:0 10px 24px rgba(124,92,255,0.18);cursor:pointer;display:none;z-index:999;}
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:2000;padding:28px;}
     .modal.open{display:flex}
     .modal img{max-width:90%;max-height:86%;border-radius:10px;box-shadow:0 18px 60px rgba(0,0,0,0.6)}
+
     @media (max-width:900px){.two-col{grid-template-columns:1fr}.hero-right{width:260px}.photo{height:360px}}
     @media (max-width:560px){nav .nav-links{display:none}.hero-right{display:none}.container{padding:18px}.hero{padding:24px 0}h1{font-size:26px}}
     #progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--accent),#5dd1ff);width:0%;z-index:1000;border-bottom-left-radius:3px;border-bottom-right-radius:3px;}
@@ -176,12 +220,20 @@
 
       <!-- CERTIFICATIONS -->
       <section id="certs" class="section" data-aos="fade-up">
-        <div class="section-title"><h2>Certifications</h2></div>
+        <div class="section-title"><h2>Certifications & Licenses</h2></div>
         <div class="cert-list">
-          <div class="cert">Acquia Certified Drupal Developer</div>
-          <div class="cert">PMP Certification</div>
-          <div class="cert">AWS Solutions Architect</div>
-          <!-- Add more certifications here -->
+          <div class="cert"><strong>Generative AI Overview for Project Managers</strong><br>Project Management Institute — Issued Apr 2024</div>
+          <div class="cert"><strong>Certified CMMI Associate</strong><br>ISACA — Issued Feb 2024 · Expires Feb 2027<br>Skills: Quality Management · Quality Control · Quality System · Quality Auditing</div>
+          <div class="cert"><strong>Certified Associate CMMI 3.0</strong><br>ISACA — Issued Feb 2024 · Expires Feb 2027</div>
+          <div class="cert"><strong>Executive Certification</strong><br>The Wharton School — Issued Oct 2022</div>
+          <div class="cert"><strong>IT Information Library Foundations Certification (ITIL)</strong><br>AXELOS Global Best Practice — Issued Jul 2022</div>
+          <div class="cert"><strong>PMI Agile Certified Practitioner (PMI-ACP)</strong><br>Project Management Institute — Issued Apr 2021<br>Credential ID: 3005014</div>
+          <div class="cert"><strong>Acquia Certified Site Builder - Drupal 8</strong><br>Acquia — Issued Aug 2018</div>
+          <div class="cert"><strong>Certified Scrum Product Owner</strong><br>Scrum Alliance — Issued Dec 2016<br>Credential ID: 000499734</div>
+          <div class="cert"><strong>PMP</strong><br>Project Management Institute — Issued Aug 2016</div>
+          <div class="cert"><strong>Certified Scrum Master</strong><br>Scrum Alliance — Issued Feb 2016 · Expired Feb 2018</div>
+          <div class="cert"><strong>SAFe® Agilist</strong><br>SAFe by Scaled Agile, Inc. — Issued Aug 2016 · Expired Aug 2017<br>Credential ID: 03902305-5829</div>
+          <div class="cert"><strong>Sun Certified Java Programmer</strong><br>Sun Microsystems — Issued (date not provided)</div>
         </div>
       </section>
 
@@ -198,14 +250,13 @@
           <img src="assets/climb1.jpg" alt="Climbing 1" onclick="openImage('assets/climb1.jpg')">
           <img src="assets/climb2.jpg" alt="Climbing 2" onclick="openImage('assets/climb2.jpg')">
           <img src="assets/climb3.jpg" alt="Climbing 3" onclick="openImage('assets/climb3.jpg')">
-          <!-- Add more climbing images -->
         </div>
       </section>
 
       <!-- CONTACT -->
       <section id="contact" class="section" data-aos="fade-up">
         <div class="section-title"><h2>Contact</h2></div>
-        <p>You can reach me via email at <a href="mailto:shefali@example.com" style="color:var(--accent)">shefali@example.com</a> or connect on <a href="https://www.linkedin.com/in/shefalinaik/" style="color:var(--accent)">LinkedIn</a>.</p>
+        <p>You can reach me via email at <a href="mailto:naikshef@gmail.com" style="color:var(--accent)">naikshef@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/shefalinaik/" style="color:var(--accent)">LinkedIn</a>.</p>
       </section>
 
     </div>
@@ -217,31 +268,28 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    // Years of experience
+    AOS.init({ once:true });
+
+    // Years of experience counter
     const startYear = 2016;
-    document.getElementById('yearsCounter').innerText = new Date().getFullYear() - startYear;
+    const counter = document.getElementById('yearsCounter');
+    counter.innerText = new Date().getFullYear() - startYear;
 
-    // Modal viewer
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    function openImage(src){
-      modalImg.src = src;
-      modal.classList.add('open');
-    }
-    function closeModal(){
-      modal.classList.remove('open');
-      modalImg.src = '';
-    }
-
-    // Scroll to top
+    // Scroll-to-top
     const scrollTopBtn = document.getElementById('scrollTop');
     window.addEventListener('scroll', ()=>{
-      if(window.scrollY > 360) scrollTopBtn.style.display='block';
+      if(window.scrollY>200) scrollTopBtn.style.display='block';
       else scrollTopBtn.style.display='none';
+      document.getElementById('progress').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100+'%';
     });
-    function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
-    AOS.init({duration:800,once:true,easing:'cubic-bezier(.2,.8,.2,1)'});
-  </script>
+    function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
 
+    // Modal image view
+    function openImage(src){
+      document.getElementById('modalImg').src=src;
+      document.getElementById('modal').classList.add('open');
+    }
+    function closeModal(){document.getElementById('modal').classList.remove('open');}
+  </script>
 </body>
 </html>
