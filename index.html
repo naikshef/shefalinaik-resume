@@ -53,8 +53,8 @@
     }
     .nav-links a{color:var(--muted);margin-left:18px;text-decoration:none;font-weight:600;font-size:14px}
     .nav-links a:hover{color:#fff}
-    header.hero{display:flex;gap:28px;align-items:center;padding:48px 0}
-    .hero-left{flex:1}
+    header.hero{display:flex;gap:28px;align-items:center;padding:48px 0;flex-wrap:wrap}
+    .hero-left{flex:1;min-width:300px}
     .hero-right{width:320px;flex:0 0 320px}
     .photo{
       width:320px;height:420px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,var(--glass),transparent);
@@ -64,7 +64,7 @@
     .card{background:linear-gradient(180deg,var(--card), rgba(20,24,28,0.6));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     h1{margin:0 0 10px;font-size:32px;letter-spacing:-0.4px}
     p.lead{color:var(--muted);margin-top:6px;font-size:15px}
-    .cta-row{display:flex;gap:12px;margin-top:18px}
+    .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
     .btn{
       display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:10px;font-weight:600;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:#fff;background:transparent;cursor:pointer;
       transition:all .18s ease;
@@ -75,16 +75,18 @@
     .section{padding:56px 0}
     .section .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
     .section .section-title h2{margin:0;font-size:20px}
-    .clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;align-items:center}
-    .client-card{height:70px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);display:flex;align-items:center;justify-content:center;border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
-    .client-card img{max-height:48px;max-width:100%;object-fit:contain;filter:grayscale(60%) brightness(1.1)}
+    .clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;align-items:center}
+    .client-card{height:100px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);display:flex;align-items:center;justify-content:center;border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.02);cursor:pointer;transition:all 0.2s ease}
+    .client-card:hover{transform:scale(1.05)}
+    .client-card img{max-height:80px;max-width:100%;object-fit:contain;filter:grayscale(50%) brightness(1.1)}
     .counter{font-size:34px;font-weight:700;color:var(--accent)}
     .two-col{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
     .cert-list{display:flex;flex-direction:column;gap:10px}
     .cert{background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
     .quote-card{font-style:italic;color:#dbe9ff;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(124,92,255,0.06), rgba(124,92,255,0.02));border:1px solid rgba(124,92,255,0.06)}
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-    .gallery-grid img{width:100%;height:140px;object-fit:cover;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.03)}
+    .gallery-grid img{width:100%;height:140px;object-fit:cover;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.03);transition:transform 0.2s}
+    .gallery-grid img:hover{transform:scale(1.05)}
     footer{padding:36px 0;color:var(--muted);text-align:center;font-size:14px}
     #scrollTop{position:fixed;right:20px;bottom:22px;background:var(--accent);color:#021020;border-radius:12px;padding:12px 14px;box-shadow:0 10px 24px rgba(124,92,255,0.18);cursor:pointer;display:none;z-index:999;}
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:2000;padding:28px;}
@@ -112,6 +114,7 @@
         <a href="#about">About</a>
         <a href="#clients">Clients</a>
         <a href="#certs">Certifications</a>
+        <a href="#quote">Quote</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
       </div>
@@ -120,6 +123,7 @@
 
   <main>
     <div class="container">
+      <!-- HERO -->
       <header class="hero">
         <div class="hero-left" data-aos="fade-right">
           <div class="card">
@@ -129,18 +133,23 @@
               <a class="btn primary" href="assets/resume.pdf" download><i class="fa fa-download"></i> Download Resume</a>
               <a class="btn" href="#contact"><i class="fa fa-envelope"></i> Contact Me</a>
             </div>
-            <div class="meta-row" aria-hidden="true">
+            <div class="meta-row">
               <div class="meta"><div style="font-size:12px;color:var(--muted)">Years experience</div><div class="counter" id="yearsCounter">0</div></div>
             </div>
           </div>
         </div>
-
         <aside class="hero-right" data-aos="fade-left">
           <div class="photo card">
             <img src="assets/profile.jpg" alt="Shefali Naik">
           </div>
         </aside>
       </header>
+
+      <!-- ABOUT -->
+      <section id="about" class="section" data-aos="fade-up">
+        <div class="section-title"><h2>About Me</h2></div>
+        <p>I am a Director of Engineering and Chief Delivery Officer with extensive experience in delivering enterprise-level projects. I am passionate about technology, AI, and climbing. My focus is on building high-performing teams and solving complex challenges with creativity and impact.</p>
+      </section>
 
       <!-- CLIENTS -->
       <section id="clients" class="section" data-aos="fade-up">
@@ -165,15 +174,44 @@
         </div>
       </section>
 
+      <!-- CERTIFICATIONS -->
+      <section id="certs" class="section" data-aos="fade-up">
+        <div class="section-title"><h2>Certifications</h2></div>
+        <div class="cert-list">
+          <div class="cert">Acquia Certified Drupal Developer</div>
+          <div class="cert">PMP Certification</div>
+          <div class="cert">AWS Solutions Architect</div>
+          <!-- Add more certifications here -->
+        </div>
+      </section>
+
       <!-- FAVORITE QUOTE -->
       <section id="quote" class="section" data-aos="fade-up">
         <div class="section-title"><h2>Favorite Quote</h2></div>
         <div class="quote-card">“I didn't come this far to only come this far.”</div>
       </section>
 
+      <!-- GALLERY -->
+      <section id="gallery" class="section" data-aos="fade-up">
+        <div class="section-title"><h2>Climbing Gallery</h2></div>
+        <div class="gallery-grid">
+          <img src="assets/climb1.jpg" alt="Climbing 1" onclick="openImage('assets/climb1.jpg')">
+          <img src="assets/climb2.jpg" alt="Climbing 2" onclick="openImage('assets/climb2.jpg')">
+          <img src="assets/climb3.jpg" alt="Climbing 3" onclick="openImage('assets/climb3.jpg')">
+          <!-- Add more climbing images -->
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section" data-aos="fade-up">
+        <div class="section-title"><h2>Contact</h2></div>
+        <p>You can reach me via email at <a href="mailto:shefali@example.com" style="color:var(--accent)">shefali@example.com</a> or connect on <a href="https://www.linkedin.com/in/shefalinaik/" style="color:var(--accent)">LinkedIn</a>.</p>
+      </section>
+
     </div>
   </main>
 
+  <!-- MODAL FOR IMAGE VIEW -->
   <div id="modal" class="modal" onclick="closeModal()"><img id="modalImg" src="" alt="Expanded photo"></div>
   <div id="scrollTop" title="Scroll to top" onclick="scrollToTop()"><i class="fa fa-chevron-up"></i></div>
 
