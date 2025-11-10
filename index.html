@@ -71,43 +71,56 @@ nav{
 
 
 /* Hamburger */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  gap:5px;
-}
-.hamburger div{
-  width:25px;
-  height:3px;
-  background:var(--accent);
-  border-radius:2px;
-  transition:all 0.3s;
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001;
 }
 
-/* Responsive */
-@media(max-width:768px){
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
 
-  /* Hide subtitle on mobile */
-  .brand .subtitle {
-    display: none;
+/* Mobile menu overlay */
+@media(max-width: 768px){
+  .hamburger {
+    display: flex;
   }
 
-  .nav-links{
-    background:var(--bg);
-    flex-direction:column;
-    overflow:hidden;
-    max-height:0;
-    transition:max-height 0.3s ease;
-    padding:0 24px; /* add horizontal padding */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg);
+    flex-direction: column;
+    align-items: flex-start; /* align links left */
+    justify-content: center;  /* center vertically */
+    padding: 40px 24px;      /* spacing from top & sides */
+    gap: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
   }
-  .nav-links.open{
-    max-height:500px;
-    padding:12px 24px; /* padding inside when open */
+
+  .nav-links.open {
+    transform: translateX(0);
   }
-  .hamburger{display:flex;}
-  .nav-links a{
-    margin:8px 0; /* vertical spacing between links */
+
+  .nav-links a {
+    font-size: 24px;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    margin: 0;
   }
 }
 
