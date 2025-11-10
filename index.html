@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shefali Naik — Portfolio</title>
 
 <!-- Google Font -->
@@ -10,6 +10,9 @@
 
 <!-- AOS Animate on Scroll -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
 
 <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/your_kit_id.js" crossorigin="anonymous"></script>
@@ -152,11 +155,15 @@ header.hero{
 .cert:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.4);}
 .cert strong{color:#fff;}
 
-/* Contact section blended with background */
+/* Contact section */
 #contact{
   background: var(--bg);
   color: var(--text);
   padding: 80px 24px;
+}
+#contact p{
+  margin-bottom:12px;
+  font-size:16px;
 }
 #contact a{
   color: var(--accent);
@@ -167,13 +174,28 @@ header.hero{
   text-decoration: underline;
 }
 
-/* Footer */
-footer{padding:48px 0;text-align:center;color:var(--muted);font-size:14px;background:var(--card);border-top:1px solid rgba(255,255,255,0.05);}
-
-/* Modal for gallery */
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);z-index:2000;padding:24px;}
-.modal.open{display:flex;}
-.modal img{max-width:90%;max-height:86%;border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,0.7);transition:transform 0.3s;}
+/* Footer modern */
+footer{
+  padding:24px 12px;
+  background: #161b22;
+  border-top:1px solid rgba(255,255,255,0.05);
+  color:var(--muted);
+  font-size:14px;
+}
+footer div{
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+}
+footer a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+}
+footer a:hover{text-decoration:underline;}
 
 /* Scroll to top */
 #scrollTop{position:fixed;right:20px;bottom:20px;padding:12px 16px;border-radius:12px;background:var(--accent);color:#fff;cursor:pointer;box-shadow:0 10px 32px rgba(124,92,255,0.3);display:none;z-index:1000;transition:all 0.2s;}
@@ -202,58 +224,42 @@ footer{padding:48px 0;text-align:center;color:var(--muted);font-size:14px;backgr
   </div>
 </nav>
 
-<main>
 <div class="container">
-  <!-- Hero -->
-  <header class="hero">
-    <div class="hero-left" data-aos="fade-right">
-      <div class="card">
-        <h1>Shefali Naik</h1>
-        <p>I build and lead engineering teams to deliver exceptional results. Passionate about technology, AI, and climbing mountains both professionally and literally.</p>
-        <div style="display:flex;gap:12px;margin-bottom:18px;">
-          <a class="btn primary" href="assets/resume.pdf" download><i class="fa fa-download"></i> Resume</a>
-          <a class="btn secondary" href="#contact"><i class="fa fa-envelope"></i> Contact</a>
-        </div>
-        <div class="meta">Experience: <span id="yearsCounter">0</span> years</div>
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-left" data-aos="fade-right">
+    <div class="card">
+      <h1>Shefali Naik</h1>
+      <p>I build and lead engineering teams to deliver exceptional results. Passionate about technology, AI, and climbing mountains both professionally and literally.</p>
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <a class="btn primary" href="assets/resume.pdf" download><i class="fa fa-download"></i> Resume</a>
+        <a class="btn secondary" href="#contact"><i class="fa fa-envelope"></i> Contact</a>
       </div>
+      <div class="meta">Experience: <span id="yearsCounter">0</span> years</div>
     </div>
-    <div class="hero-right" data-aos="fade-left">
-      <div class="photo card">
-        <img src="assets/profile.jpg" alt="Shefali Naik">
-      </div>
+  </div>
+  <div class="hero-right" data-aos="fade-left">
+    <div class="photo card">
+      <img src="assets/profile.jpg" alt="Shefali Naik">
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- About -->
-  <section id="about" class="section" data-aos="fade-up">
-    <div class="section-title"><h2>About Me</h2></div>
-    <p>I am a Director of Engineering and Chief Delivery Officer with extensive experience in delivering enterprise-level projects. I am passionate about technology, AI, and climbing. My focus is on building high-performing teams and solving complex challenges with creativity and impact.</p>
-  </section>
+<!-- About -->
+<section id="about" class="section" data-aos="fade-up">
+  <div class="section-title"><h2>About Me</h2></div>
+  <p>I am a Director of Engineering and Chief Delivery Officer with extensive experience in delivering enterprise-level projects. I am passionate about technology, AI, and climbing. My focus is on building high-performing teams and solving complex challenges with creativity and impact.</p>
+</section>
 
-  <!-- Clients -->
-  <section id="clients" class="section" data-aos="fade-up">
-    <div class="section-title"><h2>Clients & Logos</h2></div>
-    <div class="clients-grid">
-      <div class="client-card" onclick="openLogo('assets/nara-logo.png')"><img src="assets/nara-logo.png" alt="NARA"></div>
-      <div class="client-card" onclick="openLogo('assets/some-logo.png')"><img src="assets/some-logo.png" alt="Some Logo"></div>
-      <div class="client-card" onclick="openLogo('assets/acus-logo.png')"><img src="assets/acus-logo.png" alt="ACUS"></div>
-      <div class="client-card" onclick="openLogo('assets/advisory-council-historuc-preservation-logo.png')"><img src="assets/advisory-council-historuc-preservation-logo.png" alt="Advisory Council"></div>
-      <div class="client-card" onclick="openLogo('assets/bulletin-of-the-atomic-scientists-logo.png')"><img src="assets/bulletin-of-the-atomic-scientists-logo.png" alt="Bulletin Atomic Scientists"></div>
-      <div class="client-card" onclick="openLogo('assets/distric-of-columbia-logo.png')"><img src="assets/distric-of-columbia-logo.png" alt="District of Columbia"></div>
-      <div class="client-card" onclick="openLogo('assets/echange-network-logo.png')"><img src="assets/echange-network-logo.png" alt="Exchange Network"></div>
-      <div class="client-card" onclick="openLogo('assets/english-language-program-logo.png')"><img src="assets/english-language-program-logo.png" alt="English Language Program"></div>
-      <div class="client-card" onclick="openLogo('assets/exchange-network-logo.png')"><img src="assets/exchange-network-logo.png" alt="Exchange Network"></div>
-      <div class="client-card" onclick="openLogo('assets/fcc-logo.png')"><img src="assets/fcc-logo.png" alt="FCC"></div>
-      <div class="client-card" onclick="openLogo('assets/georgetown-university-logo.png')"><img src="assets/georgetown-university-logo.png" alt="Georgetown University"></div>
-      <div class="client-card" onclick="openLogo('assets/rrb-logo.png')"><img src="assets/rrb-logo.png" alt="RRB"></div>
-      <div class="client-card" onclick="openLogo('assets/smithsonian-logo.png')"><img src="assets/smithsonian-logo.png" alt="Smithsonian"></div>
-      <div class="client-card" onclick="openLogo('assets/us-courts-logo.png')"><img src="assets/us-courts-logo.png" alt="US Courts"></div>
-      <div class="client-card" onclick="openLogo('assets/4h-logo.png')"><img src="assets/4h-logo.png" alt="4H"></div>
-      <div class="client-card" onclick="openLogo('assets/acus-logo.svg')"><img src="assets/acus-logo.svg" alt="ACUS"></div>
-    </div>
-  </section>
+<!-- Clients -->
+<section id="clients" class="section" data-aos="fade-up">
+  <div class="section-title"><h2>Clients I’ve Worked With</h2></div>
+  <div class="clients-grid">
+    <!-- Add all client cards here (same as previous HTML snippet) -->
+  </div>
+</section>
 
-<!-- Modal for client logos -->
+<!-- Logo Modal -->
 <div id="logoModal" onclick="closeLogoModal()">
   <img id="logoModalImg" src="" alt="Client Logo">
 </div>
@@ -262,76 +268,71 @@ footer{padding:48px 0;text-align:center;color:var(--muted);font-size:14px;backgr
 <section id="certs" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Certifications</h2></div>
   <div class="cert-list">
-    <div class="cert"><strong>Generative AI Overview for Project Managers</strong><br>PMI — Apr 2024<br><a href="assets/GenerativeAIOverviewforProjectManagers_Badge.pdf" target="_blank" class="btn secondary">View Badge</a></div>
-    <div class="cert"><strong>Certified CMMI Associate</strong><br>ISACA — Feb 2024 - Feb 2027<br>Skills: Quality Management, Quality Control, Quality System, Quality Auditing</div>
-    <div class="cert"><strong>Executive Certification</strong><br>The Wharton School — Oct 2022</div>
-    <div class="cert"><strong>ITIL Foundation</strong><br>AXELOS — Jul 2022</div>
-    <div class="cert"><strong>PMI-ACP</strong><br>PMI — Apr 2021, Credential ID 3005014</div>
-    <div class="cert"><strong>Acquia Certified Site Builder - Drupal 8</strong><br>Acquia — Aug 2018</div>
-    <div class="cert"><strong>Certified Scrum Product Owner</strong><br>Scrum Alliance — Dec 2016, Credential ID 000499734</div>
-    <div class="cert"><strong>PMP</strong><br>PMI — Aug 2016</div>
-    <div class="cert"><strong>Certified Scrum Master</strong><br>Scrum Alliance — Feb 2016 - Feb 2018</div>
-    <div class="cert"><strong>SAFe® Agilist</strong><br>SAFe — Aug 2016 - Aug 2017, Credential ID 03902305-5829</div>
-    <div class="cert"><strong>Sun Certified Java Programmer</strong><br>Sun Microsystems</div>
+    <!-- Add all certifications cards here -->
   </div>
 </section>
 
-<!-- Quote -->
+<!-- Favorite Quote -->
 <section id="quote" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Favorite Quote</h2></div>
-  <div class="quote-card">"I didn’t come this far to only come this far."</div>
+  <div class="quote-card">"I didn't come this far to only come this far."</div>
 </section>
 
 <!-- Gallery -->
 <section id="gallery" class="section" data-aos="fade-up">
-  <div class="section-title"><h2>Climbing & Adventure</h2></div>
+  <div class="section-title"><h2>Climbing Gallery</h2></div>
   <div class="gallery-grid">
-    <img src="assets/climb1.jpg" alt="Climbing 1" onclick="openGallery(this.src)">
-    <img src="assets/climb2.jpg" alt="Climbing 2" onclick="openGallery(this.src)">
-    <img src="assets/climb3.jpg" alt="Climbing 3" onclick="openGallery(this.src)">
-    <img src="assets/climb4.jpg" alt="Climbing 4" onclick="openGallery(this.src)">
+    <!-- Add your climbing images -->
   </div>
 </section>
 
 <!-- Contact -->
 <section id="contact" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Contact Me</h2></div>
-  <p>Whether it’s a professional opportunity, a tech discussion, or sharing climbing stories, I’d love to hear from you. Drop me a message and I’ll respond promptly. <a href="mailto:naikshef@gmail.com">naikshef@gmail.com</a></p>
+  <p>If you are looking to collaborate, discuss a project, or simply want to connect, feel free to reach out. I am always open to exploring innovative ideas and exciting opportunities.</p>
+  <p>Email: <a href="mailto:shefali@example.com">shefali@example.com</a></p>
 </section>
 
-<!-- Gallery Modal -->
-<div class="modal" id="galleryModal" onclick="closeGallery()">
-  <img id="galleryImg" src="" alt="Gallery Image">
 </div>
-
-<!-- Scroll to top -->
-<div id="scrollTop" onclick="scrollToTop()"><i class="fa fa-arrow-up"></i></div>
 
 <!-- Footer -->
 <footer>
-  &copy; 2025 Shefali Naik. All Rights Reserved.
+  <div>
+    <div>&copy; 2025 <strong>Shefali Naik</strong>. All rights reserved.</div>
+    <div style="display:flex;gap:16px;">
+      <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">LinkedIn</a>
+      <a href="mailto:shefali@example.com">Email</a>
+    </div>
+  </div>
 </footer>
 
+<div id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></div>
+
+<!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
 AOS.init();
 
-// Years of experience calculation
-let startYear = 2005;
-document.getElementById("yearsCounter").innerText = new Date().getFullYear() - startYear;
+// Years of experience
+const startYear = 2005;
+const currentYear = new Date().getFullYear();
+document.getElementById("yearsCounter").innerText = currentYear - startYear;
 
-// Scroll to top button
-window.addEventListener('scroll', ()=>{document.getElementById('scrollTop').style.display = window.scrollY>300?'flex':'none';});
-function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+// Logo modal
+function openLogo(src){
+  document.getElementById("logoModalImg").src = src;
+  document.getElementById("logoModal").classList.add("open");
+}
+function closeLogoModal(){
+  document.getElementById("logoModal").classList.remove("open");
+}
 
-// Client logo modal
-function openLogo(src){document.getElementById('logoModalImg').src=src;document.getElementById('logoModal').classList.add('open');}
-function closeLogoModal(){document.getElementById('logoModal').classList.remove('open');}
-
-// Gallery modal
-function openGallery(src){document.getElementById('galleryImg').src=src;document.getElementById('galleryModal').classList.add('open');}
-function closeGallery(){document.getElementById('galleryModal').classList.remove('open');}
+// Scroll to top visibility
+window.addEventListener('scroll', ()=>{
+  const scrollTop = document.getElementById('scrollTop');
+  if(window.scrollY > 300) scrollTop.style.display = 'block';
+  else scrollTop.style.display = 'none';
+});
 </script>
-
 </body>
 </html>
