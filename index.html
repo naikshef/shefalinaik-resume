@@ -14,9 +14,6 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="assets/favicon.png">
 
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/your_kit_id.js" crossorigin="anonymous"></script>
-
 <style>
 :root{
   --bg:#0d1117;
@@ -99,12 +96,7 @@ header.hero{
 .card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:0 6px 24px rgba(0,0,0,0.4);}
 .meta{color:var(--muted);font-size:14px;}
 
-/* Clients section with white boxes */
-#clients{
-  background: rgba(255,255,255,0.05);
-  padding:64px 24px;
-  border-radius:var(--radius);
-}
+/* Clients & Firms section with white boxes */
 .clients-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -122,19 +114,19 @@ header.hero{
   box-shadow:0 4px 16px rgba(0,0,0,0.15);
 }
 .client-card img{
-  max-height:180px;  /* further enlarged */
-  max-width:95%;     /* allow width to expand */
+  max-height:180px;
+  max-width:95%;
   object-fit:contain;
   transition: transform 0.3s;
 }
 .client-card:hover img{
-  transform: scale(1.2); /* slightly bigger on hover */
+  transform: scale(1.2);
 }
 .client-card:hover{
   box-shadow:0 8px 32px rgba(0,0,0,0.25);
 }
 
-/* Modal for client logos */
+/* Modal for logos */
 #logoModal{
   position:fixed;inset:0;display:none;align-items:center;justify-content:center;
   background: rgba(0,0,0,0.85); z-index:2000; padding:24px;
@@ -220,6 +212,7 @@ footer a:hover{text-decoration:underline;}
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#clients">Clients</a>
+      <a href="#firms">Firms</a>
       <a href="#certs">Certifications</a>
       <a href="#quote">Quote</a>
       <a href="#gallery">Gallery</a>
@@ -236,8 +229,8 @@ footer a:hover{text-decoration:underline;}
       <h1>Shefali Naik</h1>
       <p>I build and lead engineering teams to deliver exceptional results. Passionate about technology, AI, and climbing mountains both professionally and literally.</p>
       <div style="display:flex;gap:12px;margin-bottom:18px;">
-        <a class="btn primary" href="assets/resume.pdf" download><i class="fa fa-download"></i> Resume</a>
-        <a class="btn secondary" href="#contact"><i class="fa fa-envelope"></i> Contact</a>
+        <a class="btn primary" href="assets/resume.pdf" download>Resume</a>
+        <a class="btn secondary" href="#contact">Contact</a>
       </div>
       <div class="meta">Experience: <span id="yearsCounter">0</span> years</div>
     </div>
@@ -265,65 +258,152 @@ footer a:hover{text-decoration:underline;}
 <section id="clients" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Clients I’ve Worked With</h2></div>
   <div class="clients-grid">
-    <!-- Client logos -->
-    <div class="client-card" onclick="openLogo('assets/us-courts-logo.png')"><img src="assets/us-courts-logo.png" alt="US Courts"></div>
     <div class="client-card" onclick="openLogo('assets/nara-logo.png')"><img src="assets/nara-logo.png" alt="NARA"></div>
-    <div class="client-card" onclick="openLogo('assets/fcc-logo.png')"><img src="assets/fcc-logo.png" alt="FCC"></div>
-    <div class="client-card" onclick="openLogo('assets/rrb-logo.png')"><img src="assets/rrb-logo.png" alt="RRB"></div>
-    <div class="client-card" onclick="openLogo('assets/smithsonian-logo.png')"><img src="assets/smithsonian-logo.png" alt="Smithsonian"></div>
-    <div class="client-card" onclick="openLogo('assets/some-logo.png')"><img src="assets/some-logo.png" alt="Some Logo"></div>
-    <div class="client-card" onclick="openLogo('assets/acus-logo.png')"><img src="assets/acus-logo.png" alt="ACUS"></div>
-    <div class="client-card" onclick="openLogo('assets/advisory-council-historuc-preservation-logo.png')"><img src="assets/advisory-council-historuc-preservation-logo.png" alt="Advisory Council"></div>
-    <div class="client-card" onclick="openLogo('assets/bulletin-of-the-atomic-scientists-logo.png')"><img src="assets/bulletin-of-the-atomic-scientists-logo.png" alt="Bulletin Atomic Scientists"></div>
-    <div class="client-card" onclick="openLogo('assets/distric-of-columbia-logo.png')"><img src="assets/distric-of-columbia-logo.png" alt="District of Columbia"></div>
-    <div class="client-card" onclick="openLogo('assets/echange-network-logo.png')"><img src="assets/echange-network-logo.png" alt="Exchange Network"></div>
-    <div class="client-card" onclick="openLogo('assets/english-language-program-logo.png')"><img src="assets/english-language-program-logo.png" alt="English Language Program"></div>
-    <div class="client-card" onclick="openLogo('assets/exchange-network-logo.png')"><img src="assets/exchange-network-logo.png" alt="Exchange Network"></div>
-    <div class="client-card" onclick="openLogo('assets/4h-logo.png')"><img src="assets/4h-logo.png" alt="4H"></div>
-    <div class="client-card" onclick="openLogo('assets/acus-logo.svg')"><img src="assets/acus-logo.svg" alt="ACUS"></div>
     <div class="client-card" onclick="openLogo('assets/mercedez.png')"><img src="assets/mercedez.png" alt="Mercedes"></div>
     <div class="client-card" onclick="openLogo('assets/hitachi-logo.png')"><img src="assets/hitachi-logo.png" alt="Hitachi"></div>
     <div class="client-card" onclick="openLogo('assets/msei.svg')"><img src="assets/msei.svg" alt="MSEI"></div>
   </div>
 </section>
 
+<!-- Firms -->
+<section id="firms" class="section" data-aos="fade-up">
+  <div class="section-title"><h2>Firms I’ve Worked For</h2></div>
+  <div class="clients-grid">
+    <div class="client-card" onclick="openLogo('assets/Capgemini_Logo_2COL_RGB.png')"><img src="assets/Capgemini_Logo_2COL_RGB.png" alt="Capgemini"></div>
+    <div class="client-card" onclick="openLogo('assets/barclays_155x34.svg')"><img src="assets/barclays_155x34.svg" alt="Barclays"></div>
+    <div class="client-card" onclick="openLogo('assets/agileana.svg')"><img src="assets/agileana.svg" alt="Agileana"></div>
+    <div class="client-card" onclick="openLogo('assets/patni.jpeg')"><img src="assets/patni.jpeg" alt="Patni Computer Systems"></div>
+  </div>
+</section>
 
 <!-- Logo Modal -->
 <div id="logoModal" onclick="closeLogoModal()">
-  <img id="logoModalImg" src="" alt="Client Logo">
+  <img id="logoModalImg" src="" alt="Client/Firm Logo">
 </div>
 
-<!-- Certifications, Quote, Gallery, Contact, Footer, ScrollTop -->
-<!-- (You can copy previous full sections from earlier full HTML here, unchanged) -->
+<!-- Certifications -->
+<section id="certs" class="section" data-aos="fade-up">
+  <div class="section-title"><h2>Certifications</h2></div>
+  <div class="cert-list">
+    <div class="cert">
+      <div class="issuer">Project Management Institute</div>
+      <strong>Generative AI Overview for Project Managers</strong>
+      <div class="date">Issued Apr 2024</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">ISACA</div>
+      <strong>Certified CMMI Associate</strong>
+      <div class="date">Issued Feb 2024 · Expires Feb 2027</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">The Wharton School</div>
+      <strong>Executive Certification</strong>
+      <div class="date">Issued Oct 2022</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">AXELOS Global Best Practice</div>
+      <strong>ITIL Foundations Certification</strong>
+      <div class="date">Issued Jul 2022</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Project Management Institute</div>
+      <strong>PMI-ACP</strong>
+      <div class="date">Issued Apr 2021</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Acquia</div>
+      <strong>Acquia Certified Site Builder - Drupal 8</strong>
+      <div class="date">Issued Aug 2018</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Scrum Alliance</div>
+      <strong>Certified Scrum Product Owner</strong>
+      <div class="date">Issued Dec 2016</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Project Management Institute</div>
+      <strong>PMP</strong>
+      <div class="date">Issued Aug 2016</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Scrum Alliance</div>
+      <strong>Certified Scrum Master</strong>
+      <div class="date">Issued Feb 2016 · Expired Feb 2018</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">SAFe by Scaled Agile, Inc.</div>
+      <strong>SAFe® Agilist</strong>
+      <div class="date">Issued Aug 2016 · Expired Aug 2017</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Sun Microsystems</div>
+      <strong>Sun Certified Java Programmer</strong>
+    </div>
+  </div>
+</section>
 
+<!-- Quote -->
+<section id="quote" class="section" data-aos="fade-up">
+  <div class="section-title"><h2>Favorite Quote</h2></div>
+  <div class="quote-card">“I didn’t come this far to only come this far.”</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="section" data-aos="fade-up">
+  <div class="section-title"><h2>Climbing & Adventures</h2></div>
+  <div class="gallery-grid">
+    <img src="assets/climbing1.jpg" alt="Climbing 1">
+    <img src="assets/climbing2.jpg" alt="Climbing 2">
+    <img src="assets/climbing3.jpg" alt="Climbing 3">
+    <img src="assets/climbing4.jpg" alt="Climbing 4">
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section" data-aos="fade-up">
+  <div class="section-title"><h2>Contact Me</h2></div>
+  <p>If you’d like to connect, collaborate, or just say hello, feel free to reach out. I love discussing technology, climbing adventures, and innovative projects.</p>
+  <p>Email me at <a href="mailto:naikshef@gmail.com">naikshef@gmail.com</a></p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <div>© 2025 Shefali Naik</div>
+    <div>
+      <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">LinkedIn</a> | 
+      <a href="mailto:naikshef@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<div id="scrollTop" onclick="scrollToTop()">Back to Top</div>
+
+<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-AOS.init({duration:800, once:true});
+AOS.init();
 
-// Years of experience
-const startYear = 2005;
-const currentYear = new Date().getFullYear();
-document.getElementById("yearsCounter").innerText = currentYear - startYear;
+// Years of experience counter
+let years = 20;
+document.getElementById('yearsCounter').innerText = years;
 
-// Footer year
-document.getElementById("year").innerText = currentYear;
+// Scroll to top button
+let scrollBtn = document.getElementById('scrollTop');
+window.onscroll = function() {
+  scrollBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+};
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
 
 // Logo modal
 function openLogo(src){
-  document.getElementById("logoModalImg").src = src;
-  document.getElementById("logoModal").classList.add("open");
+  document.getElementById('logoModalImg').src = src;
+  document.getElementById('logoModal').classList.add('open');
 }
 function closeLogoModal(){
-  document.getElementById("logoModal").classList.remove("open");
+  document.getElementById('logoModal').classList.remove('open');
 }
-
-// Scroll top button
-window.addEventListener('scroll', ()=>{
-  const scrollTop = document.getElementById('scrollTop');
-  if(window.scrollY > 300) scrollTop.style.display = 'block';
-  else scrollTop.style.display = 'none';
-});
 </script>
-
 </body>
 </html>
