@@ -45,7 +45,8 @@ nav {
   height: var(--nav-h);
   display: flex;
   justify-content: center;
-  background: rgba(13,17,23,0.95);
+  align-items: center;
+  background: rgba(13,17,23,0.95); /* slightly transparent */
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
   z-index: 999;
@@ -61,75 +62,34 @@ nav {
   box-sizing: border-box;
 }
 
-/* Brand / Logo */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.brand .logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(124,92,255,0.14);
-}
-.brand .name .title {
-  font-weight: 700;
-  color: #fff;
-  font-size: 16px;
-  line-height: 1.2;
-}
-.brand .name .subtitle {
-  font-size: 10px;
-  color: var(--muted);
-  line-height: 1.2;
-}
-
-/* Nav Links */
-.nav-links {
-  display: flex;
-  gap: 18px;
-}
-.nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-.nav-links a:hover {
-  color: var(--accent);
-}
-
 /* Hamburger */
 .hamburger {
-  display: none;
+  display: none; /* hidden by default */
   flex-direction: column;
   justify-content: space-between;
   width: 28px;
   height: 20px;
   cursor: pointer;
+  z-index: 1001; /* above nav-links */
 }
 .hamburger div {
   height: 3px;
-  background: var(--text);
+  background: #fff; /* ensure visible against dark background */
   border-radius: 2px;
   transition: all 0.3s;
 }
 
 /* Mobile Menu */
 @media (max-width: 700px) {
+  .hamburger {
+    display: flex; /* show hamburger on mobile */
+  }
   .nav-links {
     position: fixed;
     top: var(--nav-h);
     left: 0;
     right: 0;
-    height: calc(100vh - var(--nav-h)); /* make it full height minus nav */
+    height: calc(100vh - var(--nav-h));
     width: 100%;
     background: rgba(13,17,23,0.97);
     flex-direction: column;
@@ -138,13 +98,17 @@ nav {
     transform: translateY(-100%);
     transition: transform 0.3s ease;
     z-index: 1000;
-    overflow-y: auto; /* allow scrolling if menu content exceeds screen */
+    overflow-y: auto;
   }
   .nav-links.open {
     transform: translateY(0);
   }
   body.menu-open {
-    overflow: hidden; /* prevent body scroll when menu is open */
+    overflow: hidden;
+  }
+  .nav-links a {
+    font-size: 18px;
+    color: #fff; /* make links visible */
   }
 }
   
