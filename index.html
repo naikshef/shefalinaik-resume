@@ -154,6 +154,8 @@ header.hero{
 .cert{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,0.3);transition:all 0.3s;}
 .cert:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.4);}
 .cert strong{color:#fff;}
+.cert .issuer{color:var(--muted);font-size:14px;margin-bottom:8px;}
+.cert .date{color:var(--muted);font-size:12px;}
 
 /* Contact section */
 #contact{
@@ -245,7 +247,7 @@ footer a:hover{text-decoration:underline;}
   </div>
 </header>
 
-<!-- About Section -->
+<!-- About -->
 <section id="about" class="section" data-aos="fade-up">
   <div class="section-title"><h2>About Me</h2></div>
   <p>
@@ -257,12 +259,11 @@ footer a:hover{text-decoration:underline;}
   </p>
 </section>
 
-
 <!-- Clients -->
 <section id="clients" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Clients I’ve Worked With</h2></div>
   <div class="clients-grid">
-    <!-- Add all original client logos + new ones (Barclays, Capgemini, Hitachi, MSEI, Daimler) -->
+    <!-- All logos as previously listed -->
     <div class="client-card" onclick="openLogo('assets/nara-logo.png')"><img src="assets/nara-logo.png" alt="NARA"></div>
     <div class="client-card" onclick="openLogo('assets/some-logo.png')"><img src="assets/some-logo.png" alt="Some Logo"></div>
     <div class="client-card" onclick="openLogo('assets/acus-logo.png')"><img src="assets/acus-logo.png" alt="ACUS"></div>
@@ -296,54 +297,113 @@ footer a:hover{text-decoration:underline;}
 <section id="certs" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Certifications</h2></div>
   <div class="cert-list">
-    <!-- Certifications go here (same as before) -->
+    <div class="cert">
+      <div class="issuer">Project Management Institute</div>
+      <strong>Generative AI Overview for Project Managers</strong>
+      <div class="date">Issued Apr 2024</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">ISACA</div>
+      <strong>Certified CMMI Associate</strong>
+      <div class="date">Issued Feb 2024 · Expires Feb 2027</div>
+      <div class="meta">Skills: Quality Management · Quality Control · Quality System · Quality Auditing</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">The Wharton School</div>
+      <strong>Executive Certification</strong>
+      <div class="date">Issued Oct 2022</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">AXELOS Global Best Practice</div>
+      <strong>IT Information Library Foundations Certification (ITIL)</strong>
+      <div class="date">Issued Jul 2022</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Project Management Institute</div>
+      <strong>PMI Agile Certified Practitioner (PMI-ACP)</strong>
+      <div class="date">Issued Apr 2021</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Acquia</div>
+      <strong>Acquia Certified Site Builder - Drupal 8</strong>
+      <div class="date">Issued Aug 2018</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Scrum Alliance</div>
+      <strong>Certified Scrum Product Owner</strong>
+      <div class="date">Issued Dec 2016</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Project Management Institute</div>
+      <strong>PMP</strong>
+      <div class="date">Issued Aug 2016</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Scrum Alliance</div>
+      <strong>Certified Scrum Master</strong>
+      <div class="date">Issued Feb 2016 · Expired Feb 2018</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">SAFe by Scaled Agile, Inc.</div>
+      <strong>SAFe® Agilist</strong>
+      <div class="date">Issued Aug 2016 · Expired Aug 2017</div>
+    </div>
+    <div class="cert">
+      <div class="issuer">Sun Microsystems</div>
+      <strong>Sun Certified Java Programmer</strong>
+    </div>
   </div>
 </section>
 
-<!-- Favorite Quote -->
+<!-- Quote -->
 <section id="quote" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Favorite Quote</h2></div>
-  <div class="quote-card">"I didn't come this far to only come this far."</div>
+  <div class="quote-card">
+    “I didn’t come this far to only come this far.”
+  </div>
 </section>
 
 <!-- Gallery -->
 <section id="gallery" class="section" data-aos="fade-up">
-  <div class="section-title"><h2>Climbing Gallery</h2></div>
+  <div class="section-title"><h2>Climbing & Adventures</h2></div>
   <div class="gallery-grid">
-    <!-- Add your climbing images -->
+    <img src="assets/climbing1.jpg" alt="Climbing 1">
+    <img src="assets/climbing2.jpg" alt="Climbing 2">
+    <img src="assets/climbing3.jpg" alt="Climbing 3">
+    <img src="assets/climbing4.jpg" alt="Climbing 4">
   </div>
 </section>
 
 <!-- Contact -->
 <section id="contact" class="section" data-aos="fade-up">
   <div class="section-title"><h2>Contact Me</h2></div>
-  <p>If you are looking to collaborate, discuss a project, or simply want to connect, feel free to reach out. I am always open to exploring innovative ideas and exciting opportunities.</p>
-  <p>Email: <a href="mailto:naikshef@gmail.com">naikshef@gmail.com</a></p>
+  <p>If you’d like to connect, collaborate, or just say hello, feel free to reach out. I love discussing technology, climbing adventures, and innovative projects.</p>
+  <p>Email me at <a href="mailto:naikshef@gmail.com">naikshef@gmail.com</a></p>
 </section>
-
-</div>
 
 <!-- Footer -->
 <footer>
   <div>
-    <div>&copy; 2025 <strong>Shefali Naik</strong>. All rights reserved.</div>
-    <div style="display:flex;gap:16px;">
-      <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">LinkedIn</a>
-      <a href="mailto:naikshef@gmail.com">Email</a>
-    </div>
+    <div>© <span id="year"></span> Shefali Naik. All rights reserved.</div>
+    <div><a href="#about">Back to top</a></div>
   </div>
 </footer>
 
 <div id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></div>
 
-<!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-AOS.init();
+AOS.init({duration:800, once:true});
+
+// Years of experience
 const startYear = 2005;
 const currentYear = new Date().getFullYear();
 document.getElementById("yearsCounter").innerText = currentYear - startYear;
 
+// Footer year
+document.getElementById("year").innerText = currentYear;
+
+// Logo modal
 function openLogo(src){
   document.getElementById("logoModalImg").src = src;
   document.getElementById("logoModal").classList.add("open");
@@ -352,11 +412,13 @@ function closeLogoModal(){
   document.getElementById("logoModal").classList.remove("open");
 }
 
+// Scroll top button
 window.addEventListener('scroll', ()=>{
   const scrollTop = document.getElementById('scrollTop');
   if(window.scrollY > 300) scrollTop.style.display = 'block';
   else scrollTop.style.display = 'none';
 });
 </script>
+
 </body>
 </html>
