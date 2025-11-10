@@ -37,46 +37,78 @@ body{
 .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
 /* Navigation */
-nav{
-  position:fixed;top:0;left:0;right:0;height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-h);
+  display: flex;
+  justify-content: center; /* center inner container */
   background: rgba(13,17,23,0.95);
   backdrop-filter: blur(6px);
-  border-bottom:1px solid rgba(255,255,255,0.05);
-  z-index:999;
-  padding:0 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 999;
 }
-.brand{display:flex;align-items:center;gap:12px;}
-.brand .logo{
-  width:44px;height:44px;border-radius:12px;background:var(--accent);
-  display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;
-  box-shadow:0 6px 18px rgba(124,92,255,0.14);
+
+/* Align nav content with container width */
+.nav-inner {
+  width: 100%;
+  max-width: var(--maxw); /* same as container */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
 }
-.nav-links{
-  display:flex;
-  gap:18px;
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.nav-links a{
-  color:var(--muted);
-  text-decoration:none;
-  font-weight:600;
-  transition:color 0.2s;
+.brand .logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(124,92,255,0.14);
 }
-.nav-links a:hover{color:var(--accent);}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: var(--accent);
+}
 
 /* Hamburger */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  gap:5px;
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
 }
-.hamburger div{
-  width:25px;
-  height:3px;
-  background:var(--accent);
-  border-radius:2px;
-  transition:all 0.3s;
+.hamburger div {
+  height: 3px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
 }
 
 /* Responsive */
@@ -292,7 +324,7 @@ footer a:hover{text-decoration:underline;}
 
 <div id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-<footer> <div> <p>© 2025 <strong>Shefali Naik</strong>. All rights reserved.</p> <p>Built with passion, technology, and a little AI magic 🤖✨</p> <p> <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">LinkedIn</a> · <a href="mailto:naikshef@gmail.com">Email</a> · <a href="#top">Back to Top ↑</a> </p> </div> </footer>
+<footer> <div> <p>© 2025 <strong>Shefali Naik</strong>. All rights reserved.</p> <p>Built with passion, technology, and a little AI magic✨</p> <p> <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">LinkedIn</a> · <a href="mailto:naikshef@gmail.com">Email</a> · <a href="#top">Back to Top ↑</a> </p> </div> </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
