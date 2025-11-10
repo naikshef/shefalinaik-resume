@@ -25,7 +25,6 @@
   --maxw:1100px;
   --nav-h:72px;
 }
-
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Inter',sans-serif;
@@ -35,8 +34,7 @@ body{
   scroll-behavior:smooth;
   padding-top:var(--nav-h);
 }
-
-.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
 /* Navigation */
 nav{
@@ -52,7 +50,6 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.05);
   z-index:999;
 }
-
 .nav-inner{
   width:100%;
   max-width:var(--maxw);
@@ -63,12 +60,12 @@ nav{
   box-sizing:border-box;
 }
 
+/* Brand */
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
 }
-
 .brand .logo{
   width:44px;
   height:44px;
@@ -81,19 +78,31 @@ nav{
   color:#fff;
   box-shadow:0 6px 18px rgba(124,92,255,0.14);
 }
+.brand .name{
+  display:flex;
+  flex-direction:column;
+  font-size:14px;
+}
+.brand .name .title{
+  font-weight:700;
+}
+.brand .name .subtitle{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px;
+}
 
+/* Nav links */
 .nav-links{
   display:flex;
   gap:18px;
 }
-
 .nav-links a{
   color:var(--muted);
   text-decoration:none;
   font-weight:600;
   transition:color 0.2s;
 }
-
 .nav-links a:hover{color:var(--accent);}
 
 /* Hamburger */
@@ -105,7 +114,6 @@ nav{
   height:20px;
   cursor:pointer;
 }
-
 .hamburger div{
   height:3px;
   background:var(--text);
@@ -114,78 +122,53 @@ nav{
 }
 
 /* Mobile menu */
-@media (max-width: 700px) {
-  .hamburger {
-    display: flex;
-  }
-  .nav-links {
-    position: fixed;
-    top: var(--nav-h);
-    left: 0;
-    right: 0;
-    width: 100%;
+@media (max-width:700px){
+  .hamburger{display:flex;}
+  .nav-links{
+    position:fixed;
+    top:var(--nav-h);
+    left:0;
+    right:0;
+    width:100%;
     background: rgba(13,17,23,0.97);
-    flex-direction: column;
-    gap: 12px;
-    padding: 16px 24px;
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1000; /* make sure it’s above all content */
+    flex-direction:column;
+    gap:12px;
+    padding:16px 24px;
+    transform:translateY(-100%);
+    transition:transform 0.3s ease;
+    z-index:1000;
   }
-  .nav-links.open {
-    transform: translateY(0);
-  }
-  .nav-links a {
-    font-size: 18px;
-  }
+  .nav-links.open{transform:translateY(0);}
+  .nav-links a{font-size:18px;}
 }
-
 
 /* Hero Section */
 header.hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
   padding:80px 0;
 }
-
 .hero-left{flex:1;min-width:320px;padding-right:24px;}
 .hero-left h1{font-size:40px;font-weight:700;margin-bottom:16px;}
 .hero-left p{font-size:16px;color:var(--muted);margin-bottom:24px;line-height:1.6;}
-
 .hero-right{flex:0 0 360px;display:flex;justify-content:center;}
 .photo{width:360px;height:480px;border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.5);}
 .photo img{width:100%;height:100%;object-fit:cover;display:block;}
-
-@media (max-width:768px){
+@media(max-width:768px){
   .hero-right{flex:1 1 100%;margin-top:40px;}
   .photo{width:100%;max-width:360px;height:auto;}
 }
 
 /* Buttons */
 .btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 20px;
-  border-radius:12px;
-  font-weight:600;
-  text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;
   transition:all 0.2s;
 }
-
 .btn.primary{
-  background:var(--accent);
-  color:#fff;
-  box-shadow:0 10px 30px rgba(124,92,255,0.2);
+  background:var(--accent);color:#fff;box-shadow:0 10px 30px rgba(124,92,255,0.2);
 }
 .btn.primary:hover{filter:brightness(0.9);}
-
 .btn.secondary{
-  background:transparent;
-  color:var(--accent);
-  border:1px solid var(--accent);
+  background:transparent;color:var(--accent);border:1px solid var(--accent);
 }
 .btn.secondary:hover{background:var(--accent);color:#fff;}
 
@@ -194,17 +177,12 @@ header.hero{
 .section-title{display:flex;align-items:center;margin-bottom:32px;}
 .section-title h2{color:var(--accent);font-size:24px;font-weight:700;letter-spacing:1px;}
 
-/* Cards */
-.card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:0 6px 24px rgba(0,0,0,0.4);}
-.meta{color:var(--muted);font-size:14px;}
-
-/* Clients & Firms */
+/* Clients & Firms Grid */
 .clients-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:32px;
 }
-
 .client-card{
   display:flex;
   align-items:center;
@@ -216,27 +194,19 @@ header.hero{
   cursor:pointer;
   box-shadow:0 4px 16px rgba(0,0,0,0.15);
 }
-
 .client-card img{
   max-height:200px;
   max-width:100%;
   object-fit:contain;
   transition: transform 0.3s;
 }
-
-.client-card:hover img{transform: scale(1.25);}
+.client-card:hover img{transform:scale(1.25);}
 .client-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.25);}
 
 /* Modal for logos */
 #logoModal{
-  position:fixed;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background: rgba(0,0,0,0.85);
-  z-index:2000;
-  padding:24px;
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+  background: rgba(0,0,0,0.85); z-index:2000; padding:24px;
 }
 #logoModal.open{display:flex;}
 #logoModal img{
@@ -261,82 +231,7 @@ header.hero{
   box-shadow:0 6px 20px rgba(0,0,0,0.3);
   transition:transform 0.3s,box-shadow 0.3s;
 }
-.gallery-grid img:hover{
-  transform:scale(1.05);
-  box-shadow:0 10px 32px rgba(0,0,0,0.4);
-}
-
-/* Quote */
-.quote-card{
-  font-style:italic;
-  color:var(--muted);
-  padding:24px;
-  border-radius:var(--radius);
-  background:rgba(124,92,255,0.08);
-  border-left:4px solid var(--accent);
-}
-
-/* Certifications */
-.cert-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:16px;
-}
-.cert{
-  background:var(--card);
-  padding:16px;
-  border-radius:var(--radius);
-  box-shadow:0 6px 20px rgba(0,0,0,0.3);
-  transition:all 0.3s;
-}
-.cert:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 32px rgba(0,0,0,0.4);
-}
-.cert strong{color:#fff;}
-.cert .issuer{color:var(--muted);font-size:14px;margin-bottom:8px;}
-.cert .date{color:var(--muted);font-size:12px;}
-
-/* Contact section */
-#contact{
-  background: var(--bg);
-  color: var(--text);
-  padding: 80px 24px;
-}
-#contact p{
-  margin-bottom:12px;
-  font-size:16px;
-}
-#contact a{
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-}
-#contact a:hover{text-decoration: underline;}
-
-/* Footer */
-footer{
-  padding:24px 12px;
-  background: #161b22;
-  border-top:1px solid rgba(255,255,255,0.05);
-  color:var(--muted);
-  font-size:14px;
-}
-footer div{
-  max-width:var(--maxw);
-  margin:0 auto;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-}
-footer a{
-  color:var(--accent);
-  text-decoration:none;
-  font-weight:600;
-}
-footer a:hover{text-decoration:underline;}
+.gallery-grid img:hover{transform:scale(1.05);box-shadow:0 10px 32px rgba(0,0,0,0.4);}
 
 /* Scroll to Top */
 #scrollTop{
@@ -365,18 +260,18 @@ footer a:hover{text-decoration:underline;}
   <div class="nav-inner">
     <div class="brand">
       <div class="logo">SN</div>
-      <div>
-        <div style="font-weight:700">Shefali Naik</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">
-          Director of Engineering | Chief Delivery Officer | AI Enthusiast
-        </div>
+      <div class="name">
+        <div class="title">Shefali Naik</div>
+        <div class="subtitle">Director of Engineering | Chief Delivery Officer | AI Enthusiast</div>
       </div>
     </div>
+
     <div class="hamburger">
       <div></div>
       <div></div>
       <div></div>
     </div>
+
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#clients">Clients</a>
@@ -390,7 +285,7 @@ footer a:hover{text-decoration:underline;}
 </nav>
 
 <div class="container">
-  <!-- Hero -->
+  <!-- Hero Section -->
   <header class="hero">
     <div class="hero-left" data-aos="fade-right">
       <div class="card">
@@ -413,6 +308,10 @@ footer a:hover{text-decoration:underline;}
   <!-- About --> <section id="about" class="section" data-aos="fade-up"> <div class="section-title"><h2>About Me</h2></div> <p> My journey in technology spans <strong>20 years of leading teams, tackling complex challenges, and delivering innovative solutions</strong> across industries.<br><br> I thrive at the intersection of <strong>strategy and execution</strong>, where ideas become impactful realities.<br><br> My enthusiasm for technology goes beyond leadership—I built this very website myself, collaborating with AI to bring my vision to life, reflecting my love for <strong>innovation and hands-on problem solving</strong>.<br><br> Beyond the office, I chase new heights—literally—through my love for climbing, which fuels my <strong>resilience, creativity, and sense of adventure</strong>.<br><br> I bring the same <strong>energy, curiosity, and determination</strong> to every project, every team, and every challenge I embrace. </p> </section> <!-- Clients --> <section id="clients" class="section" data-aos="fade-up"> <div class="section-title"><h2>Clients I’ve Worked With</h2></div> <div class="clients-grid"> <!-- All client logos inserted here --> <div class="client-card" onclick="openLogo('assets/us-courts-logo.png')"><img src="assets/us-courts-logo.png" alt="US Courts"></div> <div class="client-card" onclick="openLogo('assets/nara-logo.png')"><img src="assets/nara-logo.png" alt="NARA"></div> <div class="client-card" onclick="openLogo('assets/fcc-logo.png')"><img src="assets/fcc-logo.png" alt="FCC"></div> <div class="client-card" onclick="openLogo('assets/smithsonian-logo.png')"><img src="assets/smithsonian-logo.png" alt="Smithsonian"></div> <div class="client-card" onclick="openLogo('assets/mercedez.png')"><img src="assets/mercedez.png" alt="Mercedes"></div> <div class="client-card" onclick="openLogo('assets/hitachi-logo.png')"><img src="assets/hitachi-logo.png" alt="Hitachi"></div> <div class="client-card" onclick="openLogo('assets/msei.svg')"><img src="assets/msei.svg" alt="MSEI"></div> <div class="client-card" onclick="openLogo('assets/4h-logo.png')"><img src="assets/4h-logo.png" alt="4H"></div> <div class="client-card" onclick="openLogo('assets/english-language-program-logo.png')"><img src="assets/english-language-program-logo.png" alt="English Language Program"></div> <div class="client-card" onclick="openLogo('assets/acus-logo.svg')"><img src="assets/acus-logo.svg" alt="ACUS SVG"></div> <div class="client-card" onclick="openLogo('assets/some-logo.png')"><img src="assets/some-logo.png" alt="Some"></div> <div class="client-card" onclick="openLogo('assets/advisory-council-historuc-preservation-logo.png')"><img src="assets/advisory-council-historuc-preservation-logo.png" alt="Advisory Council"></div> <div class="client-card" onclick="openLogo('assets/bulletin-of-the-atomic-scientists-logo.png')"><img src="assets/bulletin-of-the-atomic-scientists-logo.png" alt="Bulletin of the Atomic Scientists"></div> <div class="client-card" onclick="openLogo('assets/distric-of-columbia-logo.png')"><img src="assets/distric-of-columbia-logo.png" alt="District of Columbia"></div> <div class="client-card" onclick="openLogo('assets/echange-network-logo.png')"><img src="assets/echange-network-logo.png" alt="Exchange Network"></div> <div class="client-card" onclick="openLogo('assets/rrb-logo.png')"><img src="assets/rrb-logo.png" alt="RRB"></div> </div> </section> <!-- Firms --> <section id="firms" class="section" data-aos="fade-up"> <div class="section-title"><h2>Firms I’ve Worked For</h2></div> <div class="clients-grid"> <div class="client-card" onclick="openLogo('assets/agileana.svg')"><img src="assets/agileana.svg" alt="Agileana"></div> <div class="client-card" onclick="openLogo('assets/patni.jpeg')"><img src="assets/patni.jpeg" alt="Patni Computer Systems"></div> <div class="client-card" onclick="openLogo('assets/Capgemini_Logo_2COL_RGB.png')"><img src="assets/Capgemini_Logo_2COL_RGB.png" alt="Capgemini"></div> <div class="client-card" onclick="openLogo('assets/barclays_155x34.svg')"><img src="assets/barclays_155x34.svg" alt="Barclays"></div> </div> </section> <!-- Logo Modal --> <div id="logoModal" onclick="closeLogoModal()"> <img id="logoModalImg" src="" alt="Client/Firm Logo"> <!-- Existing content unchanged --> <!-- (Everything in your original HTML remains as-is) --> </div> <!-- Certifications --> <section id="certs" class="section" data-aos="fade-up"> <div class="section-title"><h2>Certifications</h2></div> <div class="cert-list"> <div class="cert"> <strong>Generative AI Overview for Project Managers</strong> <div class="issuer">Project Management Institute</div> <div class="date">Issued Apr 2024</div> </div> <div class="cert"> <strong>Certified CMMI Associate</strong> <div class="issuer">ISACA</div> <div class="date">Issued Feb 2024 · Expires Feb 2027</div> </div> <div class="cert"> <strong>Executive Certification</strong> <div class="issuer">The Wharton School</div> <div class="date">Issued Oct 2022</div> </div> <div class="cert"> <strong>ITIL Foundations</strong> <div class="issuer">AXELOS Global Best Practice</div> <div class="date">Issued Jul 2022</div> </div> <div class="cert"> <strong>PMI-ACP</strong> <div class="issuer">Project Management Institute</div> <div class="date">Issued Apr 2021</div> </div> <div class="cert"> <strong>Acquia Certified Site Builder - Drupal 8</strong> <div class="issuer">Acquia</div> <div class="date">Issued Aug 2018</div> </div> <div class="cert"> <strong>Certified Scrum Product Owner</strong> <div class="issuer">Scrum Alliance</div> <div class="date">Issued Dec 2016</div> </div> <div class="cert"> <strong>PMP</strong> <div class="issuer">Project Management Institute</div> <div class="date">Issued Aug 2016</div> </div> <div class="cert"> <strong>Certified Scrum Master</strong> <div class="issuer">Scrum Alliance</div> <div class="date">Issued Feb 2016 · Expired Feb 2018</div> </div> <div class="cert"> <strong>SAFe® Agilist</strong> <div class="issuer">SAFe by Scaled Agile, Inc.</div> <div class="date">Issued Aug 2016 · Expired Aug 2017</div> </div> </div> </section> <!-- Quote --> <section id="quote" class="section" data-aos="fade-up"> <div class="section-title"><h2>Favorite Quote</h2></div> <div class="quote-card">"I didn't come this far to only come this far."</div> </section> <!-- Gallery --> <section id="gallery" class="section" data-aos="fade-up"> <div class="section-title"><h2>Climbing Gallery</h2></div> <div class="gallery-grid"> <img src="assets/climb1.jpg" alt="Climb 1"> <img src="assets/climb2.png" alt="Climb 2"> <img src="assets/climb3.png" alt="Climb 3"> </div> </section> <!-- Contact --> <section id="contact" class="section" data-aos="fade-up"> <div class="section-title"><h2>Contact Me</h2></div> <p>Interested in connecting, collaborating, or just saying hello? I’d love to hear from you! Reach out via email or connect with me on LinkedIn.</p> <p>Email: <a href="mailto:naikshef@gmail.com">naikshef@gmail.com</a></p> <p>LinkedIn: <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">linkedin.com/in/shefalinaik/</a></p> </section>
 </div>
 
+<div id="logoModal" onclick="closeLogoModal()">
+  <img id="logoModalImg" src="" alt="Client/Firm Logo">
+</div>
+
 <div id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <footer>
@@ -420,40 +319,36 @@ footer a:hover{text-decoration:underline;}
     <p>© 2025 <strong>Shefali Naik</strong>. All rights reserved.</p>
     <p>Built with passion, technology, and a little AI magic✨</p>
     <p>
-      <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">LinkedIn</a> |
-      <a href="mailto:naikshef@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank">LinkedIn</a> ·
+      <a href="mailto:naikshef@gmail.com">Email</a> ·
+      <a href="#top">Back to Top ↑</a>
     </p>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-  // Initialize AOS
-  AOS.init();
+AOS.init();
 
-  // Hamburger toggle + auto-close on link click
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
+// Hamburger toggle + close on link click
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
+hamburger.addEventListener('click', ()=>{ navLinks.classList.toggle('open'); });
 
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-    });
-  });
+navLinks.querySelectorAll('a').forEach(link=>{
+  link.addEventListener('click', ()=>{ navLinks.classList.remove('open'); });
+});
 
-  // Logo modal
-  function openLogo(src){
-    document.getElementById('logoModalImg').src = src;
-    document.getElementById('logoModal').classList.add('open');
-  }
-
-  function closeLogoModal(){
-    document.getElementById('logoModal').classList.remove('open');
-  }
+// Logo modal
+function openLogo(src){
+  document.getElementById('logoModalImg').src = src;
+  document.getElementById('logoModal').classList.add('open');
+}
+function closeLogoModal(){
+  document.getElementById('logoModal').classList.remove('open');
+}
 </script>
+
 </body>
 </html>
