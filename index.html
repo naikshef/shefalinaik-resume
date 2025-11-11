@@ -167,12 +167,51 @@ header.hero{
 .section-title{display:flex;align-items:center;margin-bottom:32px;}
 .section-title h2{color:var(--accent);font-size:24px;font-weight:700;letter-spacing:1px;}
 
-/* Clients/Firms Grid */
-.clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;}
-.client-card{display:flex;align-items:center;justify-content:center;padding:16px;background:#fff;border-radius:var(--radius);transition:all 0.3s;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.15);}
-.client-card img{max-height:200px;max-width:100%;object-fit:contain;transition: transform 0.3s;}
-.client-card:hover img{transform:scale(1.25);}
-.client-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+/* Clients / Firms Grid (updated for equal heights) */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  align-items: stretch; /* ensures equal height per row */
+}
+
+.client-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: all 0.3s;
+  height: 160px; /* consistent height across cards */
+  cursor: pointer;
+}
+
+.client-card img {
+  max-width: 100%;
+  max-height: 80%; /* keep logos visually uniform */
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.client-card:hover img {
+  transform: scale(1.15);
+}
+
+.client-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 768px) {
+  .clients-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .client-card {
+    height: 140px; /* slightly smaller on mobile, still uniform */
+  }
+}
 
 /* Modal for logos */
 #logoModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background: rgba(0,0,0,0.85); z-index:2000; padding:24px;}
