@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Shefali Naik — Portfolio</title>
+<title>Shefali Naik</title>
 <meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23d97757'/%3E%3Ctext x='32' y='41' font-family='Arial' font-size='24' font-weight='700' text-anchor='middle' fill='%23141413'%3ESN%3C/text%3E%3C/svg%3E">
@@ -171,10 +171,33 @@
 
   /* Logos */
   .logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: .75rem; }
-  .logos li { list-style: none; background: #fff; border: 1px solid var(--line); border-radius: .8rem; display: grid; place-items: center; padding: 1.2rem 1rem; min-height: 6.5rem; text-align: center; font-family: var(--sans); font-size: .85rem; color: #5e5d59; }
-  .logos li.no-img::after { content: attr(data-name); }
-  .logos img { max-height: 3.2rem; width: auto; object-fit: contain; filter: grayscale(1); opacity: .8; transition: filter .2s, opacity .2s; }
-  .logos li:hover img { filter: none; opacity: 1; }
+  .logos li {
+    list-style: none; background: #fff; border: 1px solid var(--line); border-radius: .8rem;
+    display: grid; place-items: center; padding: 1.2rem 1rem; min-height: 6.5rem;
+    text-align: center; font-family: var(--sans); font-size: .85rem; color: #5e5d59;
+    position: relative; overflow: hidden; isolation: isolate;
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
+  }
+  /* warm clay glow that rises from the bottom of the tile */
+  .logos li::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(120% 90% at 50% 120%, rgba(217,119,87,.22), rgba(217,119,87,0) 65%);
+    opacity: 0; transition: opacity .35s;
+  }
+  /* clay bar that draws in along the bottom edge */
+  .logos li::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+    background: var(--clay); transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .logos li:hover {
+    transform: translateY(-4px); border-color: var(--clay);
+    box-shadow: 0 14px 28px -14px rgba(193,95,60,.45);
+  }
+  .logos li:hover::before { opacity: 1; }
+  .logos li:hover::after { transform: scaleX(1); }
+  .logos li:hover img { transform: scale(1.08); }
+  .logos li.no-img::before { content: attr(data-name); position: static; inset: auto; z-index: auto; background: none; opacity: 1; }
+  .logos img { max-height: 3.2rem; width: auto; object-fit: contain; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
   .logos { padding: 0; margin: 0; }
   .firms { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
   .firms li { min-height: 7.5rem; }
@@ -191,7 +214,6 @@
     content: ""; position: absolute; left: -7px; top: .5rem; width: 12px; height: 12px; border-radius: 50%;
     background: var(--clay); border: 2px solid var(--bg);
   }
-  .timeline li.expired::before { background: var(--mid); }
   .timeline h3 { font-size: 1.05rem; font-weight: 500; }
   .timeline .issuer { color: var(--muted); grid-column: 1; margin: 0; font-size: .98rem; }
   .timeline time { font-family: var(--sans); font-size: .85rem; color: var(--muted); grid-column: 2; grid-row: 1 / span 2; text-align: right; white-space: nowrap; padding-top: .15rem; }
