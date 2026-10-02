@@ -132,16 +132,28 @@
   .hero h1 { font-size: clamp(2.75rem, 7.5vw, 5.25rem); font-weight: 500; letter-spacing: -0.03em; }
   .hero .role { font-family: var(--sans); color: var(--accent-text); font-size: clamp(1rem, 1.8vw, 1.2rem); margin: .9rem 0 1.6rem; }
   .hero p.lede { font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.55; max-width: 30em; margin: 0 0 1rem; }
-  .hero p.aside { color: var(--muted); max-width: 34em; margin: 0 0 2rem; }
+  .hero p.aside { font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.55; max-width: 30em; margin: 0 0 2rem; }
   .actions { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
   .btn {
     font-family: var(--sans); font-size: .95rem; font-weight: 500; text-decoration: none;
-    padding: .8rem 1.4rem; border-radius: .6rem; border: 1px solid transparent; transition: background .15s, border-color .15s;
+    padding: .8rem 1.4rem; border-radius: .6rem; border: 1px solid transparent;
+    position: relative; overflow: hidden; isolation: isolate; display: inline-block;
+    transition: color .3s, border-color .3s, transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
   }
+  /* dot that floods the whole button on hover, same move as the domain pills */
+  .btn::before {
+    content: ""; position: absolute; left: 1.3rem; top: 50%; width: .5rem; height: .5rem; margin: -.25rem 0 0 -.25rem;
+    border-radius: 50%; z-index: -1; transform: scale(0);
+    transition: transform .45s cubic-bezier(.4,0,.2,1);
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -12px rgba(193,95,60,.6); }
+  .btn:hover::before { transform: scale(120); }
   .btn.solid { background: var(--clay); color: var(--ink); }
-  .btn.solid:hover { background: var(--clay-deep); color: var(--paper); }
-  .btn.ghost { border-color: var(--line); }
-  .btn.ghost:hover { border-color: var(--fg); }
+  .btn.solid::before { background: var(--ink); }
+  .btn.solid:hover { color: var(--paper); border-color: var(--ink); }
+  .btn.ghost { border-color: var(--line); color: var(--fg); }
+  .btn.ghost::before { background: var(--clay); }
+  .btn.ghost:hover { color: var(--ink); border-color: var(--clay); }
   .portrait { position: relative; justify-self: end; width: min(100%, 24rem); }
   .portrait img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: 12rem 12rem 1rem 1rem; background: var(--stone); }
   .portrait .years {
@@ -176,40 +188,50 @@
      divide cleanly into 4 columns, and into 2 on small screens */
   .logos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .9rem; }
   @media (max-width: 640px) { .logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; } }
-  .logos li {
-    list-style: none; background: #fff; border: 1px solid var(--line); border-radius: .8rem;
-    display: grid; place-items: center; padding: 1rem; height: 9.5rem;
-    text-align: center; font-family: var(--sans); font-size: .85rem; color: #5e5d59;
-    position: relative; overflow: hidden; isolation: isolate;
-    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
-  }
-  /* warm clay glow that rises from the bottom of the tile */
-  .logos li::before {
-    content: ""; position: absolute; inset: 0; z-index: -1;
-    background: radial-gradient(120% 90% at 50% 120%, rgba(217,119,87,.22), rgba(217,119,87,0) 65%);
-    opacity: 0; transition: opacity .35s;
-  }
-  /* clay bar that draws in along the bottom edge */
-  .logos li::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
-    background: var(--clay); transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.2,.8,.2,1);
-  }
-  .logos li:hover {
-    transform: translateY(-4px); border-color: var(--clay);
-    box-shadow: 0 14px 28px -14px rgba(193,95,60,.45);
-  }
-  .logos li:hover::before { opacity: 1; }
-  .logos li:hover::after { transform: scaleX(1); }
-  .logos li:hover img { transform: scale(1.08); }
-  .logos li.no-img::before { content: attr(data-name); position: static; inset: auto; z-index: auto; background: none; opacity: 1; }
-  /* Fallback box; script below resizes each logo so they all look the same size */
-  .logos img { width: 100%; height: 100%; object-fit: contain; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
   .logos { padding: 0; margin: 0; }
-  @media (max-width: 520px) { .logos li { height: 7.5rem; padding: .75rem; } }
+  /* Simple tiles: logos always in full color, equal size (sized by script
+     below); on hover, a bold orange border traces the whole tile */
+  .logos li { list-style: none; height: 9.5rem; }
+  .logos .tile {
+    position: relative; width: 100%; height: 100%; border-radius: .8rem;
+    background: #fff; border: 6px solid transparent; box-shadow: 0 0 0 1px var(--line);
+    display: flex; align-items: center; justify-content: center; padding: .7rem;
+    transition: border-color .25s, box-shadow .25s, transform .25s;
+  }
+  .logos li:hover .tile {
+    border-color: var(--clay);
+    box-shadow: 0 14px 26px -16px rgba(193,95,60,.5);
+    transform: translateY(-3px);
+  }
+  .logos img { width: 100%; height: 100%; object-fit: contain; }
+  @media (max-width: 520px) { .logos li { height: 7.5rem; } .logos .tile { padding: .55rem; } }
+  @media (prefers-reduced-motion: reduce) { .logos .tile { transition: none; } }
 
   .domains { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0 0; padding: 0; list-style: none; }
-  .domains li { font-family: var(--sans); font-size: .92rem; padding: .5rem 1rem; border-radius: 2rem; background: var(--panel); }
+  .domains li {
+    font-family: var(--sans); font-size: .92rem; padding: .55rem 1.1rem .55rem .85rem; border-radius: 2rem;
+    display: inline-flex; align-items: center; gap: .55rem;
+    background: var(--panel); border: 1px solid var(--line); position: relative; overflow: hidden; isolation: isolate;
+    cursor: default; transition: color .3s, transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, border-color .3s;
+  }
+  /* clay dot that floods the whole pill on hover */
+  .domains li::before {
+    content: ""; position: absolute; left: 1.4rem; top: 50%; width: .5rem; height: .5rem; margin: -.25rem 0 0 -.25rem;
+    border-radius: 50%; background: var(--clay); z-index: -1; transform: scale(0);
+    transition: transform .45s cubic-bezier(.4,0,.2,1);
+  }
+  .domains li:hover {
+    color: var(--ink); border-color: var(--clay); transform: translateY(-3px);
+    box-shadow: 0 10px 20px -12px rgba(193,95,60,.6);
+  }
+  .domains li:hover::before { transform: scale(120); }
+  .domains svg {
+    width: 1.1rem; height: 1.1rem; flex: none; fill: none; stroke: var(--clay-deep); stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s, transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .domains li:hover svg { stroke: var(--ink); transform: scale(1.12); }
   .domains-label { font-family: var(--sans); font-size: 1.05rem; margin: 3rem 0 0; }
+  @media (max-width: 520px) { .domains li:last-child { flex-basis: 100%; } }
 
   /* Certifications timeline */
   .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
@@ -253,10 +275,6 @@
   /* Contact */
   .contact { background: var(--panel); }
   .contact p.intro { font-size: clamp(1.2rem, 2vw, 1.4rem); max-width: 30em; margin: 0 0 2rem; line-height: 1.5; }
-  .contact dl { display: grid; grid-template-columns: auto 1fr; gap: .75rem 2rem; margin: 2.2rem 0 0; font-family: var(--sans); }
-  .contact dt { color: var(--muted); font-size: .9rem; }
-  .contact dd { margin: 0; }
-  .contact dd a { text-decoration-color: var(--clay); text-underline-offset: 4px; overflow-wrap: anywhere; }
 
   /* Footer */
   footer.site { padding: 2rem 0; font-family: var(--sans); font-size: .85rem; color: var(--muted); }
@@ -305,7 +323,6 @@
         <p class="aside">Beyond work, I’m a devoted mom, travel enthusiast, and indoor rock climber — always seeking the next wall to conquer, whether it’s in the gym or in leadership.</p>
         <div class="actions">
           <a class="btn solid" href="#contact">Get in touch</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/shefalinaik/" target="_blank" rel="noopener">View LinkedIn</a>
         </div>
       </div>
       <div class="portrait">
@@ -333,31 +350,31 @@
       <h2>Clients I’ve worked with</h2>
       <div>
         <ul class="logos">
-          <li><img loading="lazy" src="assets/us-courts-logo.png" alt="US Courts"></li>
-          <li><img loading="lazy" src="assets/nara-logo.png" alt="National Archives (NARA)"></li>
-          <li><img loading="lazy" src="assets/fcc-logo.png" alt="FCC"></li>
-          <li><img loading="lazy" src="assets/smithsonian-logo.png" alt="Smithsonian"></li>
-          <li><img loading="lazy" src="assets/mercedez.png" alt="Mercedes-Benz"></li>
-          <li><img loading="lazy" src="assets/hitachi-logo.png" alt="Hitachi"></li>
-          <li><img loading="lazy" src="assets/msei.svg" alt="MSEI"></li>
-          <li><img loading="lazy" src="assets/4h-logo.png" alt="4-H"></li>
-          <li><img loading="lazy" src="assets/english-language-program-logo.png" alt="English Language Program"></li>
-          <li><img loading="lazy" src="assets/acus-logo.svg" alt="ACUS"></li>
-          <li><img loading="lazy" src="assets/some-logo.png" alt="SOME"></li>
-          <li><img loading="lazy" src="assets/advisory-council-historuc-preservation-logo.png" alt="Advisory Council on Historic Preservation"></li>
-          <li><img loading="lazy" src="assets/bulletin-of-the-atomic-scientists-logo.png" alt="Bulletin of the Atomic Scientists"></li>
-          <li><img loading="lazy" src="assets/distric-of-columbia-logo.png" alt="District of Columbia"></li>
-          <li><img loading="lazy" src="assets/echange-network-logo.png" alt="Exchange Network"></li>
-          <li><img loading="lazy" src="assets/rrb-logo.png" alt="Railroad Retirement Board (RRB)"></li>
+          <li><div class="tile"><img loading="lazy" src="assets/us-courts-logo.png" alt="US Courts"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/nara-logo.png" alt="National Archives (NARA)"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/fcc-logo.png" alt="FCC"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/smithsonian-logo.png" alt="Smithsonian"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/mercedez.png" alt="Mercedes-Benz"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/hitachi-logo.png" alt="Hitachi"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/msei.svg" alt="MSEI"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/4h-logo.png" alt="4-H"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/english-language-program-logo.png" alt="English Language Program"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/acus-logo.svg" alt="ACUS"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/some-logo.png" alt="SOME"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/advisory-council-historuc-preservation-logo.png" alt="Advisory Council on Historic Preservation"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/bulletin-of-the-atomic-scientists-logo.png" alt="Bulletin of the Atomic Scientists"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/distric-of-columbia-logo.png" alt="District of Columbia"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/echange-network-logo.png" alt="Exchange Network"></div></li>
+          <li><div class="tile"><img loading="lazy" src="assets/rrb-logo.png" alt="Railroad Retirement Board (RRB)"></div></li>
         </ul>
         <h3 class="domains-label">Domains I’ve worked in</h3>
         <ul class="domains">
-          <li>Federal government</li>
-          <li>Non-profits and member associations</li>
-          <li>Healthcare and medical research</li>
-          <li>Education and cultural institutions</li>
-          <li>Financial services</li>
-          <li>Automotive</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2l8 5H4z"/></svg>Federal government</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg>Non-profits and member associations</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/><path d="M3.5 12h5l1.5-3 2.5 6 2-4h6"/></svg>Healthcare and medical research</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5M22 10v6"/></svg>Education and cultural institutions</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>Financial services</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2M3 12h18M9.5 17h5"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>Automotive</li>
         </ul>
       </div>
     </div>
@@ -367,10 +384,10 @@
     <div class="wrap head">
       <h2>Firms I’ve worked for</h2>
       <ul class="logos firms">
-        <li><img loading="lazy" src="assets/agileana.svg" alt="Agileana"></li>
-        <li><img loading="lazy" src="assets/patni.jpeg" alt="Patni Computer Systems"></li>
-        <li><img loading="lazy" src="assets/Capgemini_Logo_2COL_RGB.png" alt="Capgemini"></li>
-        <li><img loading="lazy" src="assets/barclays_155x34.svg" alt="Barclays"></li>
+        <li><div class="tile"><img loading="lazy" src="assets/agileana.svg" alt="Agileana"></div></li>
+        <li><div class="tile"><img loading="lazy" src="assets/patni.jpeg" alt="Patni Computer Systems"></div></li>
+        <li><div class="tile"><img loading="lazy" src="assets/Capgemini_Logo_2COL_RGB.png" alt="Capgemini"></div></li>
+        <li><div class="tile"><img loading="lazy" src="assets/barclays_155x34.svg" alt="Barclays"></div></li>
       </ul>
     </div>
   </section>
@@ -436,10 +453,6 @@
           <a class="btn solid" href="mailto:naikshef@gmail.com">Email me</a>
           <a class="btn ghost" href="https://www.linkedin.com/in/shefalinaik/" target="_blank" rel="noopener">Connect on LinkedIn</a>
         </div>
-        <dl>
-          <dt>Email</dt><dd><a href="mailto:naikshef@gmail.com">naikshef@gmail.com</a></dd>
-          <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/shefalinaik/" target="_blank" rel="noopener">linkedin.com/in/shefalinaik</a></dd>
-        </dl>
       </div>
     </div>
   </section>
@@ -467,23 +480,30 @@
 
   // Show the client name if a logo file is missing
   document.querySelectorAll('.logos img').forEach(img => {
-    const fail = () => { const li = img.parentElement; li.dataset.name = img.alt; li.classList.add('no-img'); img.remove(); };
+    const fail = () => { const t = img.closest('.tile'); if (t) t.textContent = img.alt; };
     if (img.complete && img.naturalWidth === 0) fail(); else img.addEventListener('error', fail);
   });
 
   // Give every logo the same visual weight: equal area, whatever the file's shape
   const sizeLogo = img => {
-    const li = img.parentElement; if (!li || !img.naturalWidth || !img.naturalHeight) return;
-    const cs = getComputedStyle(li);
-    const bw = li.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-    const bh = li.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    const tile = img.closest('.tile'); if (!tile || !img.naturalWidth || !img.naturalHeight) return;
+    const cs = getComputedStyle(tile);
+    const bw = tile.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const bh = tile.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
     const r = img.naturalWidth / img.naturalHeight;
-    const area = bw * bh * 0.5;                 // logo covers about half the box
+    const area = bw * bh * 0.82; // logos fill most of the tile
     let w = Math.sqrt(area * r), h = w / r;
-    const fit = Math.min(1, bw / w, bh / h);     // never break out of the tile
-    img.style.width = (w * fit) + 'px'; img.style.height = (h * fit) + 'px';
+    let fit = Math.min(1, bw / w, bh / h); // never break out of the tile
+    w *= fit; h *= fit;
+    // boost squarer, naturally-small marks so they read as large as wide wordmarks
+    const minSpan = Math.min(bw, bh) * 0.92;
+    if (Math.min(w, h) < minSpan) {
+      const boost = Math.min(minSpan / Math.min(w, h), bw / w, bh / h);
+      w *= boost; h *= boost;
+    }
+    img.style.width = w + 'px'; img.style.height = h + 'px';
   };
-  const logoImgs = () => document.querySelectorAll('.logos img');
+  const logoImgs = () => document.querySelectorAll('.logos .tile img');
   logoImgs().forEach(img => img.complete ? sizeLogo(img) : img.addEventListener('load', () => sizeLogo(img)));
   let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => logoImgs().forEach(sizeLogo), 120); });
 
