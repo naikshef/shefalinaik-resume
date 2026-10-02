@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Shefali Naik</title>
+<title>Shefali Naik — Portfolio</title>
 <meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23d97757'/%3E%3Ctext x='32' y='41' font-family='Arial' font-size='24' font-weight='700' text-anchor='middle' fill='%23141413'%3ESN%3C/text%3E%3C/svg%3E">
@@ -143,7 +143,7 @@
   .btn.ghost { border-color: var(--line); }
   .btn.ghost:hover { border-color: var(--fg); }
   .portrait { position: relative; justify-self: end; width: min(100%, 24rem); }
-  .portrait img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12rem 12rem 1rem 1rem; background: var(--stone); }
+  .portrait img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: 12rem 12rem 1rem 1rem; background: var(--stone); }
   .portrait .years {
     position: absolute; left: -1.25rem; bottom: 1.5rem; background: var(--bg); border: 1px solid var(--line);
     border-radius: .8rem; padding: .7rem 1rem; font-family: var(--sans); line-height: 1.2;
@@ -151,9 +151,11 @@
   .portrait .years strong { display: block; font-size: 1.9rem; font-weight: 500; color: var(--accent-text); }
   .portrait .years span { font-size: .85rem; color: var(--muted); }
   @media (max-width: 760px) {
-    .hero .wrap { grid-template-columns: 1fr; }
-    .portrait { justify-self: start; order: -1; width: min(70%, 16rem); }
-    .portrait .years { left: auto; right: -1.5rem; }
+    .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+    .hero { padding-top: 1.5rem; }
+    .portrait { justify-self: stretch; order: -1; width: 100%; max-width: 30rem; margin: 0 auto; }
+    .portrait img { aspect-ratio: 4/4.6; border-radius: 50vw 50vw 1rem 1rem; }
+    .portrait .years { left: auto; right: .9rem; bottom: .9rem; }
   }
 
   /* Sections */
@@ -173,7 +175,7 @@
   .logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: .75rem; }
   .logos li {
     list-style: none; background: #fff; border: 1px solid var(--line); border-radius: .8rem;
-    display: grid; place-items: center; padding: 1.2rem 1rem; min-height: 6.5rem;
+    display: grid; place-items: center; padding: .9rem; min-height: 7.5rem;
     text-align: center; font-family: var(--sans); font-size: .85rem; color: #5e5d59;
     position: relative; overflow: hidden; isolation: isolate;
     transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
@@ -197,11 +199,11 @@
   .logos li:hover::after { transform: scaleX(1); }
   .logos li:hover img { transform: scale(1.08); }
   .logos li.no-img::before { content: attr(data-name); position: static; inset: auto; z-index: auto; background: none; opacity: 1; }
-  .logos img { max-height: 3.2rem; width: auto; object-fit: contain; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .logos img { max-height: 4.75rem; max-width: 100%; width: auto; object-fit: contain; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
   .logos { padding: 0; margin: 0; }
   .firms { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
-  .firms li { min-height: 7.5rem; }
-  .firms img { max-height: 2.6rem; }
+  .firms li { min-height: 8.5rem; padding: 1.1rem 1.4rem; }
+  .firms img { max-height: 4.25rem; }
 
   .domains { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0 0; padding: 0; list-style: none; }
   .domains li { font-family: var(--sans); font-size: .92rem; padding: .5rem 1rem; border-radius: 2rem; background: var(--panel); }
