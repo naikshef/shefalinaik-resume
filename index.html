@@ -172,10 +172,11 @@
   .about-copy p:first-child strong { color: var(--accent-text); }
 
   /* Logos */
-  .logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: .75rem; }
+  .logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: .9rem; }
+  @media (max-width: 520px) { .logos { grid-template-columns: 1fr 1fr; gap: .6rem; } }
   .logos li {
     list-style: none; background: #fff; border: 1px solid var(--line); border-radius: .8rem;
-    display: grid; place-items: center; padding: .9rem; min-height: 7.5rem;
+    display: grid; place-items: center; padding: 1rem; height: 9.5rem;
     text-align: center; font-family: var(--sans); font-size: .85rem; color: #5e5d59;
     position: relative; overflow: hidden; isolation: isolate;
     transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
@@ -199,11 +200,10 @@
   .logos li:hover::after { transform: scaleX(1); }
   .logos li:hover img { transform: scale(1.08); }
   .logos li.no-img::before { content: attr(data-name); position: static; inset: auto; z-index: auto; background: none; opacity: 1; }
-  .logos img { max-height: 4.75rem; max-width: 100%; width: auto; object-fit: contain; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  /* Fallback box; script below resizes each logo so they all look the same size */
+  .logos img { width: 100%; height: 100%; object-fit: contain; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
   .logos { padding: 0; margin: 0; }
-  .firms { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
-  .firms li { min-height: 8.5rem; padding: 1.1rem 1.4rem; }
-  .firms img { max-height: 4.25rem; }
+  @media (max-width: 520px) { .logos li { height: 7.5rem; padding: .75rem; } }
 
   .domains { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0 0; padding: 0; list-style: none; }
   .domains li { font-family: var(--sans); font-size: .92rem; padding: .5rem 1rem; border-radius: 2rem; background: var(--panel); }
@@ -468,6 +468,22 @@
     const fail = () => { const li = img.parentElement; li.dataset.name = img.alt; li.classList.add('no-img'); img.remove(); };
     if (img.complete && img.naturalWidth === 0) fail(); else img.addEventListener('error', fail);
   });
+
+  // Give every logo the same visual weight: equal area, whatever the file's shape
+  const sizeLogo = img => {
+    const li = img.parentElement; if (!li || !img.naturalWidth || !img.naturalHeight) return;
+    const cs = getComputedStyle(li);
+    const bw = li.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const bh = li.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    const r = img.naturalWidth / img.naturalHeight;
+    const area = bw * bh * 0.5;                 // logo covers about half the box
+    let w = Math.sqrt(area * r), h = w / r;
+    const fit = Math.min(1, bw / w, bh / h);     // never break out of the tile
+    img.style.width = (w * fit) + 'px'; img.style.height = (h * fit) + 'px';
+  };
+  const logoImgs = () => document.querySelectorAll('.logos img');
+  logoImgs().forEach(img => img.complete ? sizeLogo(img) : img.addEventListener('load', () => sizeLogo(img)));
+  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => logoImgs().forEach(sizeLogo), 120); });
 
   // Highlight the section in view
   const links = [...document.querySelectorAll('nav.primary a')];
