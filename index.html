@@ -177,7 +177,7 @@
   @media (max-width: 900px) { .head { grid-template-columns: 1fr; gap: 1.5rem; } }
 
   /* About */
-  .about-copy { max-width: 38em; }
+  .about-copy { max-width: none; }
   .about-copy p { margin: 0 0 1.2rem; }
   .about-copy p:first-child { font-size: clamp(1.25rem, 2.2vw, 1.5rem); line-height: 1.5; }
   .about-copy strong { font-weight: 500; }
@@ -251,7 +251,7 @@
   .quotes { background: var(--ink); color: var(--paper); border-top: 0; }
   .quotes .head h2 { color: var(--paper); }
   .quote-list { display: grid; gap: 3rem; }
-  .quote-list figure { margin: 0; max-width: 36em; }
+  .quote-list figure { margin: 0; max-width: none; }
   .quote-list blockquote { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2.25rem); line-height: 1.3; }
   .quote-list blockquote::before { content: "\201C"; color: var(--clay); margin-right: .05em; }
   .quote-list blockquote::after { content: "\201D"; color: var(--clay); }
@@ -269,15 +269,14 @@
   }
 
   /* Contact */
-  .contact { background: var(--panel); }
-  .contact p.intro { font-size: clamp(1.2rem, 2vw, 1.4rem); max-width: 30em; margin: 0 0 2rem; line-height: 1.5; }
+  section.block.contact { padding: clamp(1.75rem, 3.5vw, 2.5rem) 0; }
+  .contact .row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; }
+  .contact p.intro { font-size: 1.0625rem; margin: 0; line-height: 1.6; flex: 1 1 24rem; }
+  .contact .actions { flex: 0 0 auto; }
 
   /* Footer */
   footer.site { padding: 2rem 0; font-family: var(--sans); font-size: .85rem; color: var(--muted); }
   footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
-  footer.site a { text-decoration: none; }
-  footer.site a:hover { color: var(--fg); }
-  footer.site nav { display: flex; gap: 1.2rem; }
 
   .to-top {
     position: fixed; right: 1.25rem; bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
@@ -459,7 +458,7 @@
   <section class="block contact" id="contact">
     <div class="wrap head">
       <h2>Contact me</h2>
-      <div>
+      <div class="row">
         <p class="intro">Interested in connecting, collaborating, or just saying hello? I’d love to hear from you.</p>
         <div class="actions">
           <a class="btn solid" href="mailto:naikshef@gmail.com">Email me</a>
@@ -473,10 +472,6 @@
 <footer class="site">
   <div class="wrap">
     <p style="margin:0">© <span id="yr">2025</span> Shefali Naik. Built with passion, technology, and a little AI magic ✨</p>
-    <nav aria-label="Footer">
-      <a href="https://www.linkedin.com/in/shefalinaik/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:naikshef@gmail.com">Email</a>
-    </nav>
   </div>
 </footer>
 
