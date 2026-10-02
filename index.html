@@ -230,7 +230,8 @@
     stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s, transform .35s cubic-bezier(.34,1.56,.64,1);
   }
   .domains li:hover svg { stroke: var(--ink); transform: scale(1.12); }
-  @media (max-width: 520px) { .domains li:last-child { flex-basis: 100%; } }
+  .domains .break { flex-basis: 100%; width: 0; height: 0; padding: 0; margin: 0; border: 0; }
+  @media (min-width: 521px) { .domains .break { display: none; } }
 
   /* Certifications timeline */
   .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
@@ -376,6 +377,7 @@
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/><path d="M3.5 12h5l1.5-3 2.5 6 2-4h6"/></svg>Healthcare and medical research</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5M22 10v6"/></svg>Education and cultural institutions</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>Financial services</li>
+        <li class="break" aria-hidden="true"></li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2M3 12h18M9.5 17h5"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>Automotive</li>
       </ul>
     </div>
