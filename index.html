@@ -207,7 +207,7 @@
   @media (max-width: 520px) { .logos li { height: 7.5rem; } .logos .tile { padding: .55rem; } }
   @media (prefers-reduced-motion: reduce) { .logos .tile { transition: none; } }
 
-  .domains { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .domains { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; padding: 0; list-style: none; }
   .domains li {
     font-family: var(--sans); font-size: .92rem; padding: .55rem 1.1rem .55rem .85rem; border-radius: 2rem;
     display: inline-flex; align-items: center; gap: .55rem;
@@ -230,7 +230,6 @@
     stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s, transform .35s cubic-bezier(.34,1.56,.64,1);
   }
   .domains li:hover svg { stroke: var(--ink); transform: scale(1.12); }
-  .domains-label { font-family: var(--sans); font-size: 1.05rem; margin: 3rem 0 0; }
   @media (max-width: 520px) { .domains li:last-child { flex-basis: 100%; } }
 
   /* Certifications timeline */
@@ -243,9 +242,6 @@
   .timeline h3 { font-size: 1.05rem; font-weight: 500; }
   .timeline .issuer { color: var(--muted); grid-column: 1; margin: 0; font-size: .98rem; }
   .timeline time { font-family: var(--sans); font-size: .85rem; color: var(--muted); grid-column: 2; grid-row: 1 / span 2; text-align: right; white-space: nowrap; padding-top: .15rem; }
-  .timeline .status { display: block; font-size: .78rem; }
-  .timeline li.expired .status { color: var(--muted); }
-  .timeline li:not(.expired) .status { color: var(--sage); }
   @media (max-width: 520px) {
     .timeline li { grid-template-columns: 1fr; }
     .timeline time { grid-column: 1; grid-row: auto; text-align: left; }
@@ -303,6 +299,7 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#clients">Clients</a></li>
+        <li><a href="#domains">Domains</a></li>
         <li><a href="#firms">Firms</a></li>
         <li><a href="#certs">Certifications</a></li>
         <li><a href="#quote">Quotes</a></li>
@@ -367,16 +364,21 @@
           <li><div class="tile"><img loading="lazy" src="assets/echange-network-logo.png" alt="Exchange Network"></div></li>
           <li><div class="tile"><img loading="lazy" src="assets/rrb-logo.png" alt="Railroad Retirement Board (RRB)"></div></li>
         </ul>
-        <h3 class="domains-label">Domains I’ve worked in</h3>
-        <ul class="domains">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2l8 5H4z"/></svg>Federal government</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg>Non-profits and member associations</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/><path d="M3.5 12h5l1.5-3 2.5 6 2-4h6"/></svg>Healthcare and medical research</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5M22 10v6"/></svg>Education and cultural institutions</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>Financial services</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2M3 12h18M9.5 17h5"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>Automotive</li>
-        </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="block" id="domains">
+    <div class="wrap head">
+      <h2>Domains I’ve worked in</h2>
+      <ul class="domains">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2l8 5H4z"/></svg>Federal government</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg>Non-profits and member associations</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/><path d="M3.5 12h5l1.5-3 2.5 6 2-4h6"/></svg>Healthcare and medical research</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5M22 10v6"/></svg>Education and cultural institutions</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>Financial services</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2M3 12h18M9.5 17h5"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>Automotive</li>
+      </ul>
     </div>
   </section>
 
@@ -397,15 +399,15 @@
       <h2>Certifications</h2>
       <ol class="timeline">
         <li><h3>Generative AI Overview for Project Managers</h3><p class="issuer">Project Management Institute</p><time datetime="2024-04">Apr 2024</time></li>
-        <li><h3>Certified CMMI Associate</h3><p class="issuer">ISACA</p><time datetime="2024-02">Feb 2024<span class="status">Valid to Feb 2027</span></time></li>
+        <li><h3>Certified CMMI Associate</h3><p class="issuer">ISACA</p><time datetime="2024-02">Feb 2024</time></li>
         <li><h3>Executive Certification</h3><p class="issuer">The Wharton School</p><time datetime="2022-10">Oct 2022</time></li>
         <li><h3>ITIL Foundations</h3><p class="issuer">AXELOS Global Best Practice</p><time datetime="2022-07">Jul 2022</time></li>
         <li><h3>PMI-ACP</h3><p class="issuer">Project Management Institute</p><time datetime="2021-04">Apr 2021</time></li>
         <li><h3>Acquia Certified Site Builder – Drupal 8</h3><p class="issuer">Acquia</p><time datetime="2018-08">Aug 2018</time></li>
         <li><h3>Certified Scrum Product Owner</h3><p class="issuer">Scrum Alliance</p><time datetime="2016-12">Dec 2016</time></li>
         <li><h3>PMP</h3><p class="issuer">Project Management Institute</p><time datetime="2016-08">Aug 2016</time></li>
-        <li class="expired"><h3>SAFe® Agilist</h3><p class="issuer">SAFe by Scaled Agile, Inc.</p><time datetime="2016-08">Aug 2016<span class="status">Expired Aug 2017</span></time></li>
-        <li class="expired"><h3>Certified Scrum Master</h3><p class="issuer">Scrum Alliance</p><time datetime="2016-02">Feb 2016<span class="status">Expired Feb 2018</span></time></li>
+        <li><h3>SAFe® Agilist</h3><p class="issuer">SAFe by Scaled Agile, Inc.</p><time datetime="2016-08">Aug 2016</time></li>
+        <li><h3>Certified Scrum Master</h3><p class="issuer">Scrum Alliance</p><time datetime="2016-02">Feb 2016</time></li>
       </ol>
     </div>
   </section>
@@ -514,8 +516,13 @@
       if (!e.isIntersecting) return;
       links.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id ? 'true' : 'false'));
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
+  }, { rootMargin: '-15% 0px -75% 0px' });
   links.forEach(a => { const sec = document.querySelector(a.getAttribute('href')); if (sec) spy.observe(sec); });
+  window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      links.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#contact' ? 'true' : 'false'));
+    }
+  }, { passive: true });
 
   // Mobile menu
   const header = document.querySelector('header.site');
